@@ -1,0 +1,4 @@
+mode: mainline
+branches:
+  master:
+    regex: ^main$
