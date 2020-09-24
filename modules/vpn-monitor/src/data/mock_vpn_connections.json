@@ -1,0 +1,952 @@
+{
+    "VpnConnections": [
+        {
+            "CustomerGatewayConfiguration": "mock_cgw",
+            "CustomerGatewayId": "cgw-0382b735e6d769bf7",
+            "Category": "VPN",
+            "State": "available",
+            "Type": "ipsec.1",
+            "VpnConnectionId": "vpn-mock-0031c32391e6ab544",
+            "TransitGatewayId": "tgw-0edbcd123033dd9eb",
+            "Options": {
+                "EnableAcceleration": false,
+                "StaticRoutesOnly": false,
+                "TunnelOptions": [
+                    {
+                        "OutsideIpAddress": "35.136.137.225",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 5
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev1"
+                            },
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    },
+                    {
+                        "OutsideIpAddress": "35.136.137.230",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 5
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev1"
+                            },
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Routes": [],
+            "Tags": [
+                {
+                    "Key": "is-production",
+                    "Value": "false"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "test-vpn2-vpn"
+                }
+            ],
+            "VgwTelemetry": [
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-08-11T14:22:55+00:00",
+                    "OutsideIpAddress": "35.136.137.225",
+                    "Status": "DOWN",
+                    "StatusMessage": "IPSEC IS DOWN"
+                },
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-08-05T06:15:40+00:00",
+                    "OutsideIpAddress": "35.136.137.230",
+                    "Status": "DOWN",
+                    "StatusMessage": "IPSEC IS DOWN"
+                }
+            ]
+        },
+        {
+            "CustomerGatewayConfiguration": "mock_cgw",
+            "CustomerGatewayId": "cgw-0bc38392450e0f520",
+            "Category": "VPN",
+            "State": "available",
+            "Type": "ipsec.1",
+            "VpnConnectionId": "vpn-mock-04826560c876e3702",
+            "TransitGatewayId": "tgw-0edbcd123033dd9eb",
+            "Options": {
+                "EnableAcceleration": false,
+                "StaticRoutesOnly": false,
+                "TunnelOptions": [
+                    {
+                        "OutsideIpAddress": "3.8.16.42",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 5
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev1"
+                            },
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    },
+                    {
+                        "OutsideIpAddress": "35.136.137.238",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES128"
+                            },
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA1"
+                            },
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 2
+                            },
+                            {
+                                "Value": 5
+                            },
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev1"
+                            },
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Routes": [],
+            "Tags": [
+                {
+                    "Key": "is-production",
+                    "Value": "false"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "test-vpn1-customer-vpn"
+                }
+            ],
+            "VgwTelemetry": [
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-08-13T07:16:56+00:00",
+                    "OutsideIpAddress": "3.8.16.42",
+                    "Status": "DOWN",
+                    "StatusMessage": "IPSEC IS DOWN"
+                },
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-08-17T08:36:43+00:00",
+                    "OutsideIpAddress": "35.136.137.238",
+                    "Status": "DOWN",
+                    "StatusMessage": "IPSEC IS DOWN"
+                }
+            ]
+        },
+        {
+            "CustomerGatewayConfiguration": "mock_cgw",
+            "CustomerGatewayId": "cgw-094eec1815f511ee2",
+            "Category": "VPN",
+            "State": "available",
+            "Type": "ipsec.1",
+            "VpnConnectionId": "vpn-mock-001ba2866449b3c33",
+            "TransitGatewayId": "tgw-0edbcd123033dd9eb",
+            "Options": {
+                "EnableAcceleration": false,
+                "StaticRoutesOnly": true,
+                "TunnelOptions": [
+                    {
+                        "OutsideIpAddress": "52.56.57.124",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 14
+                            },
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    },
+                    {
+                        "OutsideIpAddress": "52.56.57.85",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Routes": [],
+            "Tags": [
+                {
+                    "Key": "owner",
+                    "Value": "electronic monitoring programme: emprogrammepmo@justice.gov.uk"
+                },
+                {
+                    "Key": "component",
+                    "Value": "sn-alerts"
+                },
+                {
+                    "Key": "environment-name",
+                    "Value": "hmpps-sn-np"
+                },
+                {
+                    "Key": "source-code",
+                    "Value": "https://github.com/ministryofjustice/hmpps-electronic-monitoring-service"
+                },
+                {
+                    "Key": "application",
+                    "Value": "electronic monitoring service"
+                },
+                {
+                    "Key": "is-production",
+                    "Value": "false"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "nonprod-vpn2-lotX-lotY-customer-vpn"
+                },
+                {
+                    "Key": "business-unit",
+                    "Value": "HMPPS"
+                },
+                {
+                    "Key": "em-sub-service",
+                    "Value": "hmpps"
+                },
+                {
+                    "Key": "infrastructure-support",
+                    "Value": "emprogrammepmo@justice.gov.uk"
+                }
+            ],
+            "VgwTelemetry": [
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-06-15T09:25:42+00:00",
+                    "OutsideIpAddress": "52.56.57.124",
+                    "Status": "UP",
+                    "StatusMessage": ""
+                },
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-06-16T16:09:55+00:00",
+                    "OutsideIpAddress": "52.56.57.85",
+                    "Status": "DOWN",
+                    "StatusMessage": ""
+                }
+            ]
+        },
+        {
+            "CustomerGatewayConfiguration": "mock_cgw",
+            "CustomerGatewayId": "cgw-094eec1815f511ee2",
+            "Category": "VPN",
+            "State": "available",
+            "Type": "ipsec.1",
+            "VpnConnectionId": "vpn-mock-05761e10d0be17088",
+            "TransitGatewayId": "tgw-0edbcd123033dd9eb",
+            "Options": {
+                "EnableAcceleration": false,
+                "StaticRoutesOnly": true,
+                "TunnelOptions": [
+                    {
+                        "OutsideIpAddress": "35.177.178.135",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    },
+                    {
+                        "OutsideIpAddress": "35.178.179.147",
+                        "Phase1EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase2EncryptionAlgorithms": [
+                            {
+                                "Value": "AES256"
+                            }
+                        ],
+                        "Phase1IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase2IntegrityAlgorithms": [
+                            {
+                                "Value": "SHA2-256"
+                            }
+                        ],
+                        "Phase1DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "Phase2DHGroupNumbers": [
+                            {
+                                "Value": 15
+                            },
+                            {
+                                "Value": 16
+                            },
+                            {
+                                "Value": 17
+                            },
+                            {
+                                "Value": 18
+                            },
+                            {
+                                "Value": 22
+                            },
+                            {
+                                "Value": 23
+                            },
+                            {
+                                "Value": 24
+                            }
+                        ],
+                        "IkeVersions": [
+                            {
+                                "Value": "ikev2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Routes": [],
+            "Tags": [
+                {
+                    "Key": "owner",
+                    "Value": "emprogrammepmo@justice.gov.uk"
+                },
+                {
+                    "Key": "component",
+                    "Value": "Shared Networking"
+                },
+                {
+                    "Key": "environment-name",
+                    "Value": "hmpps-sn-np"
+                },
+                {
+                    "Key": "source-code",
+                    "Value": "https://github.com/ministryofjustice/hmpps-electronic-monitoring-service"
+                },
+                {
+                    "Key": "application",
+                    "Value": "electronic monitoring service"
+                },
+                {
+                    "Key": "is-production",
+                    "Value": "false"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "nonprod-vpn1-lotX-lotY-customer-vpn"
+                },
+                {
+                    "Key": "business-unit",
+                    "Value": "HMPPS"
+                },
+                {
+                    "Key": "em-sub-service",
+                    "Value": "hmpps"
+                },
+                {
+                    "Key": "infrastructure-support",
+                    "Value": "emprogrammepmo@justice.gov.uk"
+                }
+            ],
+            "VgwTelemetry": [
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-06-15T09:26:24+00:00",
+                    "OutsideIpAddress": "35.177.178.135",
+                    "Status": "UP",
+                    "StatusMessage": ""
+                },
+                {
+                    "AcceptedRouteCount": 0,
+                    "LastStatusChange": "2020-06-10T15:42:48+00:00",
+                    "OutsideIpAddress": "35.178.179.147",
+                    "Status": "DOWN",
+                    "StatusMessage": ""
+                }
+            ]
+        }
+    ]
+}
+
