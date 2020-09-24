@@ -1,8 +1,8 @@
 resource "aws_dynamodb_table" "this" {
-  name         = local.dynamodb_table_name
-  billing_mode = "PROVISIONED"
-  hash_key     = "TunnelId"
-  range_key  = "VpnConnectionId"
+  name           = local.dynamodb_table_name
+  billing_mode   = "PROVISIONED"
+  hash_key       = "TunnelId"
+  range_key      = "VpnConnectionId"
   read_capacity  = 5
   write_capacity = 5
 
@@ -12,7 +12,7 @@ resource "aws_dynamodb_table" "this" {
     type = "S"
   }
 
-    attribute {
+  attribute {
     name = "VpnConnectionId"
     type = "S"
   }

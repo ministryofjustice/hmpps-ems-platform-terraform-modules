@@ -106,7 +106,7 @@ resource "aws_lambda_layer_version" "this" {
   filename   = data.archive_file.layer.output_path
   layer_name = "vpn-monitor-modules"
 
-  source_code_hash = filebase64sha256(data.archive_file.layer.output_path)
+  source_code_hash    = filebase64sha256(data.archive_file.layer.output_path)
   compatible_runtimes = ["python3.8"]
 }
 
@@ -117,7 +117,7 @@ resource "aws_lambda_function" "this" {
   handler       = "monitor.lambda_handler"
   layers = [
     aws_lambda_layer_version.this.arn
-    ]
+  ]
 
 
   source_code_hash = filebase64sha256(data.archive_file.source.output_path)
@@ -129,10 +129,10 @@ resource "aws_lambda_function" "this" {
     variables = {
       sns_email_topic_name = aws_sns_topic.this.name
       sns_slack_topic_name = "alarms-topic-slack"
-      state_table_name = aws_dynamodb_table.this.name
+      state_table_name     = aws_dynamodb_table.this.name
       enable_mock_response = var.enable_mock_response
     }
   }
 
-  tags    = var.tags
+  tags = var.tags
 }

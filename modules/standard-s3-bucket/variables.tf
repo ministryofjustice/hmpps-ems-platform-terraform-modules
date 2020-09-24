@@ -5,71 +5,71 @@ variable name {
 
 
 variable acl {
-  type = string
+  type        = string
   description = "Sets the bucket ACL."
-  default = "private"
+  default     = "private"
 }
 
 
 variable policy {
-  type = string
+  type        = string
   description = "An additional policy that will be applied to the bucket."
-  default = ""
+  default     = ""
 }
 
 variable block_public_access {
-  type = bool
+  type        = bool
   description = "Enable or disable bucket public access."
-  default = true
+  default     = true
 }
 
 
 variable lifecycle_enabled {
-  type = bool
+  type        = bool
   description = "Enable or disable s3 lifecycle."
-  default = false
+  default     = false
 }
 
 
 variable lifecycle_standard_transition_days {
-  type = string
+  type        = string
   description = "Number of days before objects are transitioned to the STANDARD_IA storage class."
-  default = "30"
+  default     = "30"
 }
 
 
 variable lifecycle_glacier_transition_days {
-  type = string
+  type        = string
   description = "Number of days before objects are transitioned to the GLACIER storage class."
-  default = "60"
+  default     = "60"
 }
 
 
 variable lifecycle_standard_noncurrent_transition_days {
-  type = string
+  type        = string
   description = "Number of days before noncurrent objects are transitioned to the STANDARD_IA storage class."
-  default = "30"
+  default     = "30"
 }
 
 
 variable lifecycle_glacier_noncurrent_transition_days {
-  type = string
+  type        = string
   description = "Number of days before noncurrent objects are transitioned to the GLACIER storage class."
-  default = "60"
+  default     = "60"
 }
 
 
 variable lifecycle_expiration_days {
-  type = string
+  type        = string
   description = "Number of days before objects are expired."
-  default = "425"
+  default     = "425"
 }
 
 
 variable lifecycle_noncurrent_expiration_days {
-  type = string
+  type        = string
   description = "Number of days before noncurrent objects are expired."
-  default = "425"
+  default     = "425"
 }
 
 

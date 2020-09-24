@@ -29,9 +29,9 @@ data "aws_iam_policy_document" "cloudtrail_s3" {
 
 
 module "cloudtrail_s3" {
-  source = "../../../standard-s3-bucket"
-  name = local.cloudtrail_s3_bucket_name
-  policy = data.aws_iam_policy_document.cloudtrail_s3.json
+  source            = "../../../standard-s3-bucket"
+  name              = local.cloudtrail_s3_bucket_name
+  policy            = data.aws_iam_policy_document.cloudtrail_s3.json
   lifecycle_enabled = true
-  tags = var.tags
+  tags              = var.tags
 }

@@ -1,17 +1,17 @@
 variable vpc_name {
-  type = string
+  type        = string
   description = "The name of the VPC."
 }
 
 
 variable resource_name_prefix {
-  type = string
+  type        = string
   description = "This is the prefix that will be applied to all resources deployed by this module."
 }
 
 
 variable cloudwatch_destination_arn {
-  type = string
+  type        = string
   description = "The arn of the cloudwatch destination that logs will be forwarded to."
 }
 
