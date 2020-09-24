@@ -4,7 +4,10 @@ name: Global jobs
 
 on:
   pull_request:
-    branches: [main]
+    paths:
+      - modules/**
+    branches:
+      - main
 
 env:
     terraform_version: 0.13.3
