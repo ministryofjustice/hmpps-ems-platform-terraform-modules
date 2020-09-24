@@ -3,6 +3,8 @@ name: Release
 
 on:
   push:
+    paths:
+        - modules/**
     branches:
         - main
 
@@ -41,8 +43,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.gitversion.outputs.majorMinorPatch }}"
-          release_name: HMPPS EMS Terraform Modules Release ${{ steps.gitversion.outputs.majorMinorPatch }}"
-          body: ${{ steps.changelog.outputs.changelog }}"
+          tag_name: ${{ steps.gitversion.outputs.majorMinorPatch }}
+          release_name: HMPPS EMS Terraform Modules Release ${{ steps.gitversion.outputs.majorMinorPatch }}
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
