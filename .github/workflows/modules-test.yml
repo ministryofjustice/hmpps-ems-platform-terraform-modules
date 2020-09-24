@@ -33,7 +33,8 @@ jobs:
           useConfigFile: true
           configFilePath: ./GitVersion.yml
 
-      - uses: hashicorp/setup-terraform@v1
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{env.terraform_version}}
 
