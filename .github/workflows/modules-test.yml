@@ -7,6 +7,13 @@ on:
     paths:
         - "*"
 
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Test input'
+        required: true
+        default: 'test'
+
 env:
     terraform_version: 0.13.3
 
