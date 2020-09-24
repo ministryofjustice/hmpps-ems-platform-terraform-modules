@@ -1,0 +1,41 @@
+---
+
+name: Modules
+
+on:
+  push:
+    paths:
+        - "*"
+
+env:
+    terraform_version: 0.13.3
+
+jobs:
+  release:
+    name: 'Release modules'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.2
+        with:
+            versionSpec: '5.2.x'
+
+      - name: Use GitVersion
+        id: gitversion # step id used as reference for output values
+        uses: gittools/actions/gitversion/execute@v0.9.2
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{env.terraform_version}}
+
+      - run: |
+          env
+
+      - run: |
+          terraform fmt -check -recursive

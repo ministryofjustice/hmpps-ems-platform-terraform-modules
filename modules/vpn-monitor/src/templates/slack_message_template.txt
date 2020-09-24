@@ -1,0 +1,11 @@
+{{details}}
+
+:pencil: RequestId: {{requestId}}
+
+*VPN*:
+• {{vpn_name}}
+
+*Tunnels*:
+{% for tunnel in tunnels %}
+• {{ tunnel['id'] }} has moved from {{ tunnel['last_state'] }} to {{ tunnel['current_state'] }}
+{% endfor %}

@@ -1,0 +1,24 @@
+---
+
+name: Global jobs
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  triage:
+    name: Global pull request jobs
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Lint changed files
+        uses: docker://github/super-linter:latest
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_TERRAFORM_TERRASCAN: false
+          VALIDATE_PYTHON_FLAKE8: false
+          DEFAULT_BRANCH: main
