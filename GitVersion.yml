@@ -1,10 +1,4 @@
 mode: mainline
 branches:
-    master:
-        source-branches: ['main']
-
-
-
-
-
-
+  master:
+    regex: ^main$
