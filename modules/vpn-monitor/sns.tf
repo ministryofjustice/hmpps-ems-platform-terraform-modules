@@ -1,7 +1,7 @@
 resource "aws_sns_topic" "this" {
   name              = local.sns_topic_name
   tags              = var.tags
-  delivery_policy = <<EOF
+  delivery_policy   = <<EOF
 {
   "http": {
     "defaultHealthyRetryPolicy": {

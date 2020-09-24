@@ -1,50 +1,50 @@
 variable username {
-  type = string
+  type        = string
   description = "The name of the user."
 }
 
 
 variable full_name {
-  type = string
+  type        = string
   description = "The users full name. Used for resource tagging."
 }
 
 
 variable organisation {
-  type = string
+  type        = string
   description = "The users organisation. Used for resource tagging."
 }
 
 
 variable email {
-  type = string
+  type        = string
   description = "The users email address. Used for resource tagging."
 }
 
 
 variable group_membership {
-  type = list(string)
+  type        = list(string)
   description = "A list of groups that the user will be added to. Every user will automatically be added to the MFA group."
-  default = []
+  default     = []
 }
 
 
 variable path {
-  type = string
+  type        = string
   description = "The path to assign to the created user."
-  default = "/"
+  default     = "/"
 }
 
 
 variable force_destroy {
-  type = string
+  type        = string
   description = "Destroy the user even if it has an unmanaged login profile or access keys."
-  default = "true"
+  default     = "true"
 }
 
 
 variable tags {
-  type = map(string)
+  type        = map(string)
   description = "A list of tags that will be applied to deployed resources."
 }
 
@@ -53,8 +53,8 @@ locals {
   tags = merge(var.tags,
     {
       organisation = var.organisation
-      email = var.email
-      name = var.full_name
+      email        = var.email
+      name         = var.full_name
     }
   )
   default_group_membership = [
