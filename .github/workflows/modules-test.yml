@@ -38,7 +38,4 @@ jobs:
           terraform_version: ${{env.terraform_version}}
 
       - run: |
-          env
-
-      - run: |
           terraform fmt -check -recursive
