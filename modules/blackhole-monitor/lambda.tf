@@ -32,7 +32,7 @@ resource "aws_lambda_function" "this" {
   runtime = local.lambda_function_runtime
   timeout = local.lambda_function_timeout
 
-  tags    = var.tags
+  tags = var.tags
 }
 
 resource "aws_lambda_permission" "this" {
