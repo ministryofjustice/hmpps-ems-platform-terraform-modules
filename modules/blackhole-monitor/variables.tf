@@ -16,7 +16,6 @@ locals {
   lambda_iam_policy_name     = "${var.resource_name_prefix}-blackhole-monitor-policy"
   lambda_iam_role_name       = "${var.resource_name_prefix}-blackhole-monitor-role"
   lambda_function_name       = "${var.resource_name_prefix}-blackhole-monitor"
-  lambda_function_layer_name = "${var.resource_name_prefix}-blackhole-monitor-layer"
   lambda_function_runtime    = "python3.8"
   lambda_function_timeout    = "600"
 }
