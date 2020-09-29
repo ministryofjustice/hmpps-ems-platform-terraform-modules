@@ -8,7 +8,7 @@ ec2 = boto3.client('ec2')
 logger = logging.getlogger.info()
 logger.setLevel(logging.INFO)
 
-def lambda_handler(event, context):
+def run(event, context):
   # Get transit gateways
   get_transit_gateways = ec2.describe_transit_gateways()
 
