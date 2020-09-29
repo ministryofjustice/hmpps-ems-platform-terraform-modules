@@ -5,7 +5,7 @@ import os
 
 cloudwatch = boto3.client('cloudwatch')
 ec2 = boto3.client('ec2')
-logger = logging.getLogger.info()
+logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def run(event, context):
