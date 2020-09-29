@@ -1,3 +1,7 @@
+locals {
+  has_environment_variables = length(var.environment_variables) > 0
+}
+
 data "archive_file" "source" {
   type        = "zip"
   source_dir  = var.source_dir
@@ -16,8 +20,11 @@ resource "aws_lambda_function" "this" {
   runtime = var.runtime
   timeout = var.timeout
 
-  environment {
-    variables = var.environment_variables
+  dynamic "environment" {
+    for_each = var.has_environment_variables ? [1] : []
+    content {
+      variables = var.environment_variables
+    }
   }
 
   tags = var.tags
