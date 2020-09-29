@@ -46,6 +46,7 @@ variable "timeout" {
 variable "environment_variables" {
   type        = map(string)
   description = "A map of environment variables."
+  default     = {}
 }
 
 
