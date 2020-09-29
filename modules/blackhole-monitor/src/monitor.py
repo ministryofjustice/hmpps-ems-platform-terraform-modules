@@ -5,7 +5,7 @@ import os
 
 cloudwatch = boto3.client('cloudwatch')
 ec2 = boto3.client('ec2')
-logger = logging.getLogger()
+logger = logging.getlogger.info()
 logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
@@ -14,7 +14,7 @@ def lambda_handler(event, context):
 
   # Loop over transit gateways
   for transit_gateway in get_transit_gateways['TransitGateways']:
-    logger("Transit Gateway: " + transit_gateway['TransitGatewayId'])
+    logger.info("Transit Gateway: " + transit_gateway['TransitGatewayId'])
     # Loop over transit gateway route tables filtering on transit gateway ID
     get_transit_gateway_route_tables = ec2.describe_transit_gateway_route_tables(
       Filters=[
@@ -28,7 +28,7 @@ def lambda_handler(event, context):
     )
     # Search transit gateways
     for transit_gateway_route_table in get_transit_gateway_route_tables['TransitGatewayRouteTables']:
-      logger("  Transit Gateway Route Table: " + transit_gateway_route_table['TransitGatewayRouteTableId'])
+      logger.info("Transit Gateway Route Table: " + transit_gateway_route_table['TransitGatewayRouteTableId'])
       # Loop over transit gateway routes filtering on active state
       search_active_transit_gateway_routes = ec2.search_transit_gateway_routes(
         TransitGatewayRouteTableId = transit_gateway_route_table['TransitGatewayRouteTableId'],
@@ -42,10 +42,10 @@ def lambda_handler(event, context):
         ]
       )
       if len(search_active_transit_gateway_routes['Routes']) == 0:
-        logger("    No Transit Gateway Attachements in active state")
+        logger.info("No Transit Gateway Attachements in active state")
       else:
         for active_transit_gateway_route in search_active_transit_gateway_routes['Routes']:
-          logger("    Transit Gateway Attachment (Active) " + active_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + active_transit_gateway_route['DestinationCidrBlock'])
+          logger.info("Transit Gateway Attachment (Active) " + active_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + active_transit_gateway_route['DestinationCidrBlock'])
           put_cloudwatch_metric_data = cloudwatch.put_metric_data(
               Namespace='HMPPS/EMS/SharedNetworking',
               MetricData=[
@@ -86,10 +86,10 @@ def lambda_handler(event, context):
       )
 
       if len(search_blackholed_transit_gateway_routes['Routes']) == 0:
-        logger("    No Transit Gateway Attachements in blackholed state")
+        logger.info("No Transit Gateway Attachements in blackholed state")
       else:
         for blackholed_transit_gateway_route in search_blackholed_transit_gateway_routes['Routes']:
-          logger("    Transit Gateway Attachment (Blackholed) " + blackholed_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + blackholed_transit_gateway_route['DestinationCidrBlock'])
+          logger.info("Transit Gateway Attachment (Blackholed) " + blackholed_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + blackholed_transit_gateway_route['DestinationCidrBlock'])
           put_cloudwatch_metric_data = cloudwatch.put_metric_data(
               Namespace='HMPPS/EMS/SharedNetworking',
               MetricData=[

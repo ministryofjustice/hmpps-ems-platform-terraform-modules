@@ -1,27 +1,25 @@
-data "archive_file" "source" {
-  type        = "zip"
-  source_dir  = "${path.module}/src"
-  output_path = "${path.module}/files/blackhole-monitor.zip"
+data "aws_iam_policy_document" "lambda_policy" {
+  statement {
+    sid       = "AWSLambdaDescribeSearchTransits"
+    effect    = "Allow"
+    actions   = ["ec2:DescribeTransitGateways", "ec2:DescribeTransitGatewayRouteTables", "ec2:SearchTransitGatewayRoutes"]
+    resources = ["*"]
+  }
+  statement {
+    sid       = "AWSLambdaPutMetrics"
+    effect    = "Allow"
+    actions   = ["cloudwatch:PutMetricData"]
+    resources = ["*"]
+  }
 }
 
 
-resource "aws_lambda_function" "this" {
-  filename      = data.archive_file.source.output_path
-  function_name = local.lambda_function_name
-  role          = aws_iam_role.lambda.arn
-  handler       = "monitor.lambda_handler"
-
-  source_code_hash = filebase64sha256(data.archive_file.source.output_path)
-
-  runtime = local.lambda_function_runtime
-  timeout = local.lambda_function_timeout
-
-  tags = var.tags
-}
-
-resource "aws_lambda_permission" "this" {
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.this.function_name
-  principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.this.arn
+module "blackhole_monitor" {
+  source               = "../standard-lambda"
+  resource_name_prefix = var.resource_name_prefix
+  service_name         = "blackhole-monitor"
+  source_dir           = "${path.module}/src"
+  output_path          = "${path.module}/files/blackhole-monitor.zip"
+  iam_policy           = data.aws_iam_policy_document.lambda_policy.json
+  tags                 = var.tags
 }
