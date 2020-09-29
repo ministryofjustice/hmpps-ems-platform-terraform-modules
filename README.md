@@ -8,6 +8,6 @@ Features should be developed on new short-lived branches. Once a feature is read
 
 When a pull request is merged to main a new tag and release with the appropriate version number.
 
-Versioning is managed by [GitVersion](https://gitversion.net/docs/) and follows the Mainline branching strategy.
+Versioning is managed by [GitVersion](https://gitversion.net/docs/) and uses the ContinuousDelivery configuraton.
 
 A current list of releases can be found on the [releases page](https://github.com/ministryofjustice/hmpps-ems-platform-terraform-modules/releases).
