@@ -21,7 +21,7 @@ resource "aws_lambda_function" "this" {
   timeout = var.timeout
 
   dynamic "environment" {
-    for_each = var.has_environment_variables ? [1] : []
+    for_each = local.has_environment_variables ? [1] : []
     content {
       variables = var.environment_variables
     }
