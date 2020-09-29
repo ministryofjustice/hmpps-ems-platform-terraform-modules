@@ -13,25 +13,25 @@ def lambda_handler(event, context):
   get_transit_gateways = ec2.describe_transit_gateways()
 
   # Loop over transit gateways
-  for i in get_transit_gateways['TransitGateways']:
-    print("Transit Gateway: " + i['TransitGatewayId'])
+  for transit_gateway in get_transit_gateways['TransitGateways']:
+    print("Transit Gateway: " + transit_gateway['TransitGatewayId'])
     # Loop over transit gateway route tables filtering on transit gateway ID
     get_transit_gateway_route_tables = ec2.describe_transit_gateway_route_tables(
       Filters=[
         {
             'Name': 'transit-gateway-id',
             'Values': [
-                i['TransitGatewayId'],
+                transit_gateway['TransitGatewayId'],
             ]
         }
       ]
     )
     # Search transit gateways
-    for j in get_transit_gateway_route_tables['TransitGatewayRouteTables']:
-      print("  Transit Gateway Route Table: " + j['TransitGatewayRouteTableId'])
+    for transit_gateway_route_table in get_transit_gateway_route_tables['TransitGatewayRouteTables']:
+      print("  Transit Gateway Route Table: " + transit_gateway_route_table['TransitGatewayRouteTableId'])
       # Loop over transit gateway routes filtering on active state
       search_active_transit_gateway_routes = ec2.search_transit_gateway_routes(
-        TransitGatewayRouteTableId = j['TransitGatewayRouteTableId'],
+        TransitGatewayRouteTableId = transit_gateway_route_table['TransitGatewayRouteTableId'],
         Filters=[
           {
               'Name': 'state',
@@ -44,8 +44,8 @@ def lambda_handler(event, context):
       if len(search_active_transit_gateway_routes['Routes']) == 0:
         print("    No Transit Gateway Attachements in active state")
       else:
-        for k in search_active_transit_gateway_routes['Routes']:
-          print("    Transit Gateway Attachment (Active) " + k['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + k['DestinationCidrBlock'])
+        for active_transit_gateway_route in search_active_transit_gateway_routes['Routes']:
+          print("    Transit Gateway Attachment (Active) " + active_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + active_transit_gateway_route['DestinationCidrBlock'])
           put_cloudwatch_metric_data = cloudwatch.put_metric_data(
               Namespace='HMPPS/EMS/SharedNetworking',
               MetricData=[
@@ -54,15 +54,15 @@ def lambda_handler(event, context):
                   'Dimensions': [
                     {
                       'Name': 'TransitGatewayAttachmentId',
-                      'Value': k['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId']
+                      'Value': active_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId']
                     },
                     {
                       'Name': 'DestinationCidrBlock',
-                      'Value': k['DestinationCidrBlock']
+                      'Value': active_transit_gateway_route['DestinationCidrBlock']
                     },
                     {
                       'Name': 'ResourceType',
-                      'Value': k['TransitGatewayAttachments'][0]['ResourceType']
+                      'Value': active_transit_gateway_route['TransitGatewayAttachments'][0]['ResourceType']
                     },
                   ],
                   'Unit': 'None',
@@ -74,7 +74,7 @@ def lambda_handler(event, context):
 
       # Loop over transit gateway routes filtering on blackholed state
       search_blackholed_transit_gateway_routes = ec2.search_transit_gateway_routes(
-        TransitGatewayRouteTableId = j['TransitGatewayRouteTableId'],
+        TransitGatewayRouteTableId = transit_gateway_route_table['TransitGatewayRouteTableId'],
         Filters=[
           {
               'Name': 'state',
@@ -88,8 +88,8 @@ def lambda_handler(event, context):
       if len(search_blackholed_transit_gateway_routes['Routes']) == 0:
         print("    No Transit Gateway Attachements in blackholed state")
       else:
-        for l in search_blackholed_transit_gateway_routes['Routes']:
-          print("    Transit Gateway Attachment (Blackholed) " + k['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + k['DestinationCidrBlock'])
+        for blackholed_transit_gateway_route in search_blackholed_transit_gateway_routes['Routes']:
+          print("    Transit Gateway Attachment (Blackholed) " + blackholed_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId'] + " Route: " + blackholed_transit_gateway_route['DestinationCidrBlock'])
           put_cloudwatch_metric_data = cloudwatch.put_metric_data(
               Namespace='HMPPS/EMS/SharedNetworking',
               MetricData=[
@@ -98,15 +98,15 @@ def lambda_handler(event, context):
                   'Dimensions': [
                     {
                       'Name': 'TransitGatewayAttachmentId',
-                      'Value': k['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId']
+                      'Value': blackholed_transit_gateway_route['TransitGatewayAttachments'][0]['TransitGatewayAttachmentId']
                     },
                     {
                       'Name': 'DestinationCidrBlock',
-                      'Value': k['DestinationCidrBlock']
+                      'Value': blackholed_transit_gateway_route['DestinationCidrBlock']
                     },
                     {
                       'Name': 'ResourceType',
-                      'Value': k['TransitGatewayAttachments'][0]['ResourceType']
+                      'Value': blackholed_transit_gateway_route['TransitGatewayAttachments'][0]['ResourceType']
                     },
                   ],
                   'Unit': 'None',
