@@ -21,6 +21,5 @@ module "blackhole_monitor" {
   source_dir           = "${path.module}/src"
   output_path          = "${path.module}/files/blackhole-monitor.zip"
   iam_policy           = data.aws_iam_policy_document.lambda_policy.json
-  environment_variables = ""
   tags                 = local.tags
 }
