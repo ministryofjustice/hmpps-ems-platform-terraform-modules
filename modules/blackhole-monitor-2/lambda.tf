@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "lambda" {
+data "aws_iam_policy_document" "lambda_policy" {
   statement {
     sid       = "AWSLambdaDescribeSearchTransits"
     effect    = "Allow"
