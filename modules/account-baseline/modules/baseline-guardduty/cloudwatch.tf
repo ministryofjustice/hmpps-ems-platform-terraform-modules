@@ -18,6 +18,7 @@ resource "aws_cloudwatch_log_group" "this" {
 resource "aws_cloudwatch_event_rule" "this" {
   name          = local.cloudwatch_event_rule_name
   event_pattern = data.template_file.cloudwatch_event_rule.rendered
+  role_arn      = aws_iam_role.cloudwatch.arn
   tags          = var.tags
 }
 
