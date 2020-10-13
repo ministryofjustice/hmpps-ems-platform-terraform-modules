@@ -10,6 +10,11 @@ variable "tags" {
 }
 
 
+variable "sl_firehose_destination_guardduty" {
+  type = string
+}
+
+
 variable "enable_collector" {
   type        = string
   description = "Enable monitoring and feedback reporting"
@@ -24,7 +29,9 @@ variable "publishing_frequency" {
 
 
 locals {
-  guardduty_log_group_name  = "${var.resource_name_prefix}-guardduty-log-group"
-  guardduty_event_rule_name = "${var.resource_name_prefix}-guardduty-event-rule"
-  guardduty_event_target_id = "${var.resource_name_prefix}-guardduty-event-target"
+  cloudwatch_log_group_name  = "${var.resource_name_prefix}-guardduty-log-group"
+  cloudwatch_event_rule_name = "${var.resource_name_prefix}-guardduty-event-rule"
+  cloudwatch_event_target_id = "${var.resource_name_prefix}-guardduty-event-target"
+  cloudwatch_iam_policy_name = "${var.resource_name_prefix}-guardduty-policy"
+  cloudwatch_iam_role_name   = "${var.resource_name_prefix}-guardduty-role"
 }
