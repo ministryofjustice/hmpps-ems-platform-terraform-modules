@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "cloudwatch" {	
   statement {	
-    sid       = "AWSCloudTrail"	
+    sid       = "AWSEvents"	
     effect    = "Allow"	
     actions   = ["logs:*"]	
     resources = ["*"]	
