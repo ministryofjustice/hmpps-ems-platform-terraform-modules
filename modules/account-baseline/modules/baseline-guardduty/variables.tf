@@ -23,4 +23,8 @@ variable "publishing_frequency" {
 }
 
 
-# locals {}
+locals {
+  guardduty_log_group_name  = "${var.resource_name_prefix}-guardduty-log-group"
+  guardduty_event_rule_name = "${var.resource_name_prefix}-guardduty-event-rule"
+  guardduty_event_target_id = "${var.resource_name_prefix}-guardduty-event-target"
+}
