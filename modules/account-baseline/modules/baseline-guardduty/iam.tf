@@ -3,7 +3,7 @@ data "aws_iam_policy_document" "cloudwatch" {
     sid       = "AWSCloudTrail"	
     effect    = "Allow"	
     actions   = ["logs:*"]	
-    resources = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.this.name}*"]	
+    resources = ["*"]	
   }	
 }
 
