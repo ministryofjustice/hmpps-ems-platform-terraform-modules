@@ -10,4 +10,17 @@ variable "tags" {
 }
 
 
+variable "enable_collector" {
+  type        = string
+  description = "Enable monitoring and feedback reporting"
+  default     = true
+}
+
+variable "publishing_frequency" {
+  type        = string
+  description = "Specifies the frequency of notifications sent for subsequent finding occurrences"
+  default     = "SIX_HOURS"
+}
+
+
 # locals {}
