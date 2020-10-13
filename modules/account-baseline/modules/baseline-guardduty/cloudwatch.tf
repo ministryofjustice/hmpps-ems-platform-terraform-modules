@@ -26,7 +26,6 @@ resource "aws_cloudwatch_event_target" "this" {
   target_id = local.cloudwatch_event_target_id
   rule      = aws_cloudwatch_event_rule.this.name
   arn       = aws_cloudwatch_log_group.this.arn
-  role_arn  = aws_iam_role.cloudwatch.arn
 }
 
 
