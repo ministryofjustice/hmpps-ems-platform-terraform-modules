@@ -29,6 +29,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_TERRAFORM_TERRASCAN: false
           VALIDATE_PYTHON_FLAKE8: false
+          VALIDATE_EDITORCONFIG_LINTER: false
           DEFAULT_BRANCH: main
 
       - name: 'Setup Terragrunt'
