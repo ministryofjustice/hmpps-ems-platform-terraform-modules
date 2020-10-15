@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "kms" {
     condition {
       test     = "StringLike"
       variable = "kms:EncryptionContext:aws:cloudtrail:arn"
-      values   = "arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"
+      values   = ["arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"]
     }
   }
   statement {
@@ -46,17 +46,14 @@ data "aws_iam_policy_document" "kms" {
     condition {
       test     = "StringEquals"
       variable = "kms:CallerAccount"
-      values   = data.aws_caller_identity.current.account_id
+      values   = [data.aws_caller_identity.current.account_id]
     }
     condition {
       test     = "StringLike"
       variable = "kms:EncryptionContext:aws:cloudtrail:arn"
-      values   = "arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"
+      values   = ["arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"]
     }
   }
-
-
-
   statement {
     sid     = "AllowCloudWatchLogsGroup"
     effect  = "Allow"
@@ -69,7 +66,7 @@ data "aws_iam_policy_document" "kms" {
     condition {
       test     = "ArnEquals"
       variable = "kms:EncryptionContext:aws:logs:arn"
-      values   = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.cloudwatch.name}"]
+      values   = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.cloudwatch_log_group_name}"]
     }
   }
 }
