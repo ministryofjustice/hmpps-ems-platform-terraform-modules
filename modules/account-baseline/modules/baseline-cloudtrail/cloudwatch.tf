@@ -56,6 +56,7 @@ resource "aws_cloudwatch_log_group" "cloudwatch" {
 resource "aws_cloudwatch_log_stream" "cloudwatch" {
   name           = "${data.aws_caller_identity.current.account_id}_CloudTrail_${data.aws_region.current.name}"
   log_group_name = aws_cloudwatch_log_group.cloudwatch.name
+  kms_key_id     = aws_kms_key.this.arn
 }
 
 
