@@ -29,5 +29,5 @@ locals {
   cloudwatch_log_stream_name    = "${var.resource_name_prefix}-cloudtrail-log-stream"
   cloudwatch_iam_role_name      = "${var.resource_name_prefix}-cloudtrail-role"
   cloudwatch_iam_policy_name    = "${var.resource_name_prefix}-cloudtrail-policy"
-  cloudtrail_kms_key_alias_name = "${var.resource_name_prefix}-kms-key"
+  cloudtrail_kms_key_alias_name = "${var.resource_name_prefix}-cloudtrail-kms-key"
 }
