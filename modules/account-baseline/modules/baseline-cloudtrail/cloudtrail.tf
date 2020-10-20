@@ -19,5 +19,5 @@ resource "aws_cloudtrail" "cloudtrail" {
       values = ["arn:aws:lambda"]
     }
   }
-  tags                          = var.tags
+  tags = var.tags
 }
