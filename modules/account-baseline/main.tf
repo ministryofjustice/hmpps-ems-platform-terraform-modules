@@ -1,4 +1,4 @@
-module default_policies {
+module "default_policies" {
   source = "./modules/default-policies"
 }
 

@@ -13,7 +13,7 @@ variable "sl_firehose_destination_guardduty" {
 }
 
 
-variable tags {
+variable "tags" {
   type        = map(string)
   description = "A list of tags that will be applied to deployed resources."
 }

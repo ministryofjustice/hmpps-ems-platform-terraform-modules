@@ -1,4 +1,4 @@
-module vpc_flow_logs {
+module "vpc_flow_logs" {
   source = "./modules/vpc-flow-logs"
 
   resource_name_prefix       = var.resource_name_prefix
