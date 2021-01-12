@@ -1,16 +1,16 @@
-variable resource_name_prefix {
+variable "resource_name_prefix" {
   type        = string
   description = "This is the prefix that will be applied to all resources deployed by this module."
 }
 
-variable enable_mock_response {
+variable "enable_mock_response" {
   type        = bool
   description = "Instruct the lamda to consume mock_vpn_connections.json rather than call the AWS"
   default     = false
 }
 
 
-variable tags {
+variable "tags" {
   type        = map(string)
   description = "A list of tags that will be applied to deployed resources."
 }
