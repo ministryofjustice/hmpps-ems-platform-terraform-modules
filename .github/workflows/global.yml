@@ -1,0 +1,46 @@
+---
+
+name: Global Jobs
+
+on:
+  push:
+    branches-ignore:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  gh-super-linter:
+    name: 'GitHub Super-Linter'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Super Linter'
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: main
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_EDITORCONFIG: false
+          VALIDATE_PYTHON_FLAKE8: false
+          VALIDATE_TERRAFORM_TERRASCAN: false
+
+  tf-fmt:
+    name: 'Terraform Format Checks'
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/maglevlabs/infrastructure-toolkit:1.0.7
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Terragrunt hclfmt Check'
+        run: terragrunt hclfmt --terragrunt-check
+
+      - name: 'Terraform fmt Check'
+        run: terraform fmt -check -recursive
