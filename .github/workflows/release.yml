@@ -3,49 +3,26 @@ name: Release
 
 on:
   push:
-    paths:
-        - modules/**
-    branches:
-        - main
+    tags:
+      - '*'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  release:
-    name: Create Release
+  create-release:
+    name: 'Create Release'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: 'Checkout Code'
         uses: actions/checkout@v2
 
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
-
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.8
-        with:
-            versionSpec: '5.2.x'
-
-      - name: Use GitVersion
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.8
-        with:
-          useConfigFile: true
-          configFilePath: ./GitVersion.yml
-
-      - name: Generate Change Log
-        id: changelog
-        uses: heinrichreimer/github-changelog-generator-action@v2.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Release
-        id: create_release
+      - name: 'Create GitHub Release'
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.gitversion.outputs.majorMinorPatch }}
-          release_name: HMPPS EMS Terraform Modules Release ${{ steps.gitversion.outputs.majorMinorPatch }}
+          tag_name: ${{ github.ref }}
+          release_name: HMPPS EMS Terraform Modules Release ${{ github.ref }}
           body: |
-            ${{ steps.changelog.outputs.changelog }}
+            ${{ github.ref }}
           draft: false
           prerelease: false
