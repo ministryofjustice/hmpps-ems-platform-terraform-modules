@@ -12,6 +12,10 @@ variable "sl_firehose_destination_guardduty" {
   type = string
 }
 
+variable "provision_guardduty_detector" {
+  type = string
+  default = true
+}
 
 variable "tags" {
   type        = map(string)
