@@ -13,7 +13,7 @@ variable "sl_firehose_destination_guardduty" {
 }
 
 variable "provision_guardduty_detector" {
-  type = string
+  type    = string
   default = true
 }
 

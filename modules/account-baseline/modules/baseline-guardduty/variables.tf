@@ -22,7 +22,7 @@ variable "enable_collector" {
 }
 
 variable "provision_guardduty_detector" {
-  type = string
+  type    = string
   default = true
 }
 
