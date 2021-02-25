@@ -21,6 +21,10 @@ variable "enable_collector" {
   default     = true
 }
 
+variable "provision_guardduty_detector" {
+  type    = string
+  default = true
+}
 
 variable "publishing_frequency" {
   type        = string
