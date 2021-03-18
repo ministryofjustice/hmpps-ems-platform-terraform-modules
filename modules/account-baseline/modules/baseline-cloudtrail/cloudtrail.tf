@@ -1,7 +1,6 @@
 resource "aws_cloudtrail" "cloudtrail" {
   name                          = local.cloudtrail_name
-  # s3_bucket_name                = module.cloudtrail_s3.id
-  s3_bucket_name                = "hmpps-sl-awscloudtrail-log-bucket"
+  s3_bucket_name                = "hmpps-sl-awscloudtrail-log-bucket" // TODO - https://github.com/ministryofjustice/hmpps-ems-platform-terraform-modules/issues/22
   include_global_service_events = true
   enable_log_file_validation    = true
   cloud_watch_logs_group_arn    = "${aws_cloudwatch_log_group.cloudwatch.arn}:*"
