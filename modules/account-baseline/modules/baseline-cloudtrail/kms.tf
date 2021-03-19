@@ -69,6 +69,16 @@ data "aws_iam_policy_document" "kms" {
       values   = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.cloudwatch_log_group_name}"]
     }
   }
+  statement {
+    sid     = "AllowQinetiQProMonAccess"
+    effect  = "Allow"
+    actions = ["kms:Encrypt*", "kms:Decrypt*", "kms:ReEncrypt*", "kms:GenerateDataKey*", "kms:Describe*"]
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::552036846659:root"]
+    }
+    resources = ["*"]
+  }
 }
 
 resource "aws_kms_key" "this" {
