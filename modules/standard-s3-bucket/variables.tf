@@ -74,9 +74,9 @@ variable "lifecycle_noncurrent_expiration_days" {
 
 
 variable "object_ownership" {
-  type = string
+  type        = string
   description = "Specify preferred object ownership."
-  default = ""
+  default     = ""
 }
 
 
