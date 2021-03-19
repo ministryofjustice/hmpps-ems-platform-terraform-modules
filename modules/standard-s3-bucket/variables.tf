@@ -73,6 +73,13 @@ variable "lifecycle_noncurrent_expiration_days" {
 }
 
 
+variable "object_ownership" {
+  type        = string
+  description = "Specify preferred object ownership."
+  default     = ""
+}
+
+
 variable "tags" {
   type        = map(string)
   description = "A map of common tags to apply to the resources."

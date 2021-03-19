@@ -93,5 +93,11 @@ resource "aws_s3_bucket_public_access_block" "this" {
   restrict_public_buckets = true
 }
 
-# https://www.terraform.io/docs/providers/aws/r/s3_bucket.html#using-versioning
-# https://www.terraform.io/docs/providers/aws/r/s3_bucket.html#enable-logging
+
+resource "aws_s3_bucket_ownership_controls" "this" {
+  count  = var.object_ownership != "" ? 1 : 0
+  bucket = aws_s3_bucket.this.id
+  rule {
+    object_ownership = var.object_ownership
+  }
+}
