@@ -58,11 +58,3 @@ resource "aws_cloudwatch_log_stream" "cloudwatch" {
   name           = "${data.aws_caller_identity.current.account_id}_CloudTrail_${data.aws_region.current.name}"
   log_group_name = aws_cloudwatch_log_group.cloudwatch.name
 }
-
-
-resource "aws_cloudwatch_log_subscription_filter" "cloudwatch" {
-  name            = local.cloudwatch_log_group_name
-  log_group_name  = aws_cloudwatch_log_group.cloudwatch.name
-  filter_pattern  = ""
-  destination_arn = var.sl_firehose_destination_cloudtrail
-}
