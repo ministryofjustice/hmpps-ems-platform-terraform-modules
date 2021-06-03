@@ -44,6 +44,9 @@ module "ReadOnlyRole" {
   iam_account_id   = var.iam_account_id
   policy_arns = [
     data.aws_iam_policy.ReadOnlyAccess.arn,
+    data.aws_iam_policy.AWSConfigUserAccess.arn,
+    data.aws_iam_policy.AmazonGuardDutyReadOnlyAccess.arn,
+    data.aws_iam_policy.AWSSecurityHubReadOnlyAccess.arn,
     local.user_malicious_activity_deny_policy_arn
   ]
   tags = var.tags
