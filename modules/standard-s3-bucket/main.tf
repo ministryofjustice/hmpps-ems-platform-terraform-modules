@@ -84,6 +84,11 @@ resource "aws_s3_bucket" "this" {
       }
     }
   }
+  lifecycle {
+    ignore_changes = [
+      replication_configuration
+    ]
+  }
 }
 
 
