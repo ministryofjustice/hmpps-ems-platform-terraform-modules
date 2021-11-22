@@ -80,6 +80,13 @@ variable "object_ownership" {
 }
 
 
+variable "bucket_versioning_enabled" {
+  type        = bool
+  description = "Enable S3 bucket versioning"
+  default     = false
+}
+
+
 variable "tags" {
   type        = map(string)
   description = "A map of common tags to apply to the resources."
