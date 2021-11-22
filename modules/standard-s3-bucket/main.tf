@@ -36,6 +36,10 @@ resource "aws_s3_bucket" "this" {
   policy = data.aws_iam_policy_document.this.json
   tags   = var.tags
 
+  versioning {
+    enabled = var.bucket_versioning_enabled
+  }
+
   dynamic "lifecycle_rule" {
     for_each = var.lifecycle_enabled ? [1] : []
     content {
