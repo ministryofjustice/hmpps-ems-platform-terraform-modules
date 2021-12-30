@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "s3_policy" {
       "s3:*"
     ]
     resources = [
-      "${aws_s3_bucket.this.arn}",
+      aws_s3_bucket.this.arn,
       "${aws_s3_bucket.this.arn}/*"
     ]
   }
