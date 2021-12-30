@@ -9,5 +9,9 @@ variable "tags" {
 }
 
 locals {
-  config_s3_bucket_name = "${var.resource_name_prefix}-config"
+  config_s3_bucket_name        = "${var.resource_name_prefix}-config"
+  config_iam_role_name         = "${var.resource_name_prefix}-config-role"
+  config_iam_policy_name       = "${var.resource_name_prefix}-config-policy"
+  config_recorder_name         = "${var.resource_name_prefix}-config-recorder"
+  config_delivery_channel_name = "${var.resource_name_prefix}-config-delivery-channel"
 }
