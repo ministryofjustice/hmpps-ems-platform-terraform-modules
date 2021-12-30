@@ -41,6 +41,10 @@ resource "aws_iam_policy" "this" {
 resource "aws_config_configuration_recorder" "this" {
   name     = local.config_recorder_name
   role_arn = aws_iam_role.this.arn
+  recording_group {
+    all_supported = true 
+    include_global_resource_types = true
+  }
 }
 
 resource "aws_config_delivery_channel" "this" {
