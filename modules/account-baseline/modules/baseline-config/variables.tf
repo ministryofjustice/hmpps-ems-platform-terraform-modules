@@ -16,7 +16,3 @@ locals {
   config_delivery_channel_name = "${var.resource_name_prefix}-config-delivery-channel"
 }
 
-variable "enable_aws_config" {
-  type    = string
-  default = false
-}
