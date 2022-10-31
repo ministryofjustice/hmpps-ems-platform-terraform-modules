@@ -1,6 +1,12 @@
 variable "bundle_id" {
   type        = string
-  description = "The id of the bundle."
+  description = "The ID of the bundle for the WorkSpace."
+}
+
+
+variable "directory_id" {
+  type        = string
+  description = "The ID of the directory for the WorkSpace.."
 }
 
 
