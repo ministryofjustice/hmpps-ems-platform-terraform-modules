@@ -1,5 +1,5 @@
 data "aws_workspaces_bundle" "bundle" {
-  bundle_id = var.bundle_id 
+  bundle_id = var.bundle_id
 }
 
 resource "aws_workspaces_workspace" "workspace" {
