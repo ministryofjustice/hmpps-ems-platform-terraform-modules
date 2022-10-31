@@ -4,12 +4,6 @@ variable "bundle_id" {
 }
 
 
-variable "directory_id" {
-  type        = string
-  description = "The ID of the directory for the WorkSpace.."
-}
-
-
 variable "user_name" {
   type        = string
   description = "The name of the user."
