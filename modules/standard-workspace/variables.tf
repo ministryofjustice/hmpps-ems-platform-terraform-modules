@@ -68,7 +68,7 @@ variable "tags" {
 locals {
   tags = merge(var.tags,
     {
-      organisation = var.organisation
+      organisation     = var.organisation
       is-production    = "true"
       environment-name = var.current_account
       component        = "Archive Query"
