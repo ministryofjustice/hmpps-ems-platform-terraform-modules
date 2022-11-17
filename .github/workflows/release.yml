@@ -2,15 +2,15 @@
 name: Release
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    tags:
+      - '*'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   create-release:
-    if: github.event.pull_request.merged == true
     name: 'Create Release'
     runs-on: ubuntu-latest
     steps:
