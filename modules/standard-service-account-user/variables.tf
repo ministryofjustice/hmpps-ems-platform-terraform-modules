@@ -50,4 +50,5 @@ locals {
       email        = var.email
     }
   )
+  group_membership = concat(var.group_membership)
 }
