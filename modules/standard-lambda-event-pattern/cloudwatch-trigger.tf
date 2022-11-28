@@ -2,7 +2,7 @@
 resource "aws_cloudwatch_event_rule" "this" {
   name          = local.cloudwatch_event_rule_name
   description   = "A rule that triggers the lambda on a configurable schedule"
-  event_pattern = var.trigger_event
+  event_pattern = local.trigger_event_json
   tags          = var.tags
 }
 
