@@ -1,9 +1,9 @@
 # --- Trigger the lambda every 5 minutes
 resource "aws_cloudwatch_event_rule" "this" {
-  name                = local.cloudwatch_event_rule_name
-  description         = "A rule that triggers the lambda on a configurable schedule"
-  event_pattern        = var.trigger_event
-  tags                = var.tags
+  name          = local.cloudwatch_event_rule_name
+  description   = "A rule that triggers the lambda on a configurable schedule"
+  event_pattern = var.trigger_event
+  tags          = var.tags
 }
 
 
