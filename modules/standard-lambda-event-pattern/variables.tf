@@ -51,7 +51,7 @@ variable "environment_variables" {
 
 
 variable "trigger_event" {
-  type        = string
+  type        = map(object)
   description = "Defines how often the lambda function will trigger."
 }
 
