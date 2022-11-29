@@ -50,6 +50,12 @@ variable "environment_variables" {
 }
 
 
+variable "trigger_event_json" {
+  type        = string
+  description = "Defines how often the lambda function will trigger."
+}
+
+
 variable "iam_policy" {
   type        = string
   description = "A policy document representing the policy that will be associated with the lambdas role."
@@ -63,7 +69,6 @@ variable "tags" {
 
 
 locals {
-  trigger_event_json         = jsondecode(file("${path.module}/data.json"))
   lambda_name                = "${var.resource_name_prefix}-${var.service_name}-lambda"
   role_name                  = "${var.resource_name_prefix}-${var.service_name}-role"
   role_policy_name           = "${var.resource_name_prefix}-${var.service_name}-policy"
