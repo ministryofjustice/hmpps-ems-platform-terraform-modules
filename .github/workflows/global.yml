@@ -35,14 +35,18 @@ jobs:
   tf-fmt:
     name: 'Terraform Format Checks'
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/maglevlabs/infrastructure-toolkit:1.0.7
+
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
 
-      - name: 'Terragrunt hclfmt Check'
-        run: terragrunt hclfmt --terragrunt-check
-
-      - name: 'Terraform fmt Check'
-        run: terraform fmt -check -recursive
+      - name: Terragrunt fmt
+        run: |
+          echo "Updated files: ${{ steps.files.outputs.all }}"
+          updated_files=''
+          filtered_files=$(echo ${{ steps.files.outputs.all }} | tr -s [:space:] | tr -s [:space:] "\n" | grep ^terragrunt/)
+          if [[ ! -z $filtered_files ]]; then
+            updated_files=$(https://github.com/ministryofjustice/dso-infra-azure-fixngo/blob/main/terragrunt/src/terraform-fmt.sh ${filtered_files})
+          fi
+          echo "Formatted files: ${updated_files}"
+          echo ::set-output name=updated_files::${updated_files}
