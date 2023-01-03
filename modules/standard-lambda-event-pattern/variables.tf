@@ -56,6 +56,13 @@ variable "trigger_event_json" {
 }
 
 
+variable "reserved_concurrent_executions" {
+  type        = string
+  description = "Amount of reserved concurrent executions for this lambda function."
+  default     = -1
+}
+
+
 variable "iam_policy" {
   type        = string
   description = "A policy document representing the policy that will be associated with the lambdas role."
