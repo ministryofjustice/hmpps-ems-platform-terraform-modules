@@ -1,10 +1,10 @@
 data "aws_iam_policy_document" "billing-deny-write-policy" {
   statement {
     actions = [
-      "aws-portal:ModifyBilling",
-      "aws-portal:ModifyAccount",
+      "account:*",
+      "billing:*",
+      "payments:*",
       "budgets:ModifyBudget",
-      "aws-portal:ModifyPaymentMethods",
       "ce:CreateCostCategoryDefinition",
       "ce:DeleteCostCategoryDefinition",
       "ce:UpdateCostCategoryDefinition"
