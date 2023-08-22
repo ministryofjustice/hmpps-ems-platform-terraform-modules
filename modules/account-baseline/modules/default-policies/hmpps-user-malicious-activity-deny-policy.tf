@@ -4,9 +4,9 @@ data "aws_iam_policy_document" "user-malicious-activity-deny-policy" {
       "cloudtrail:DeleteTrail",
       "cloudtrail:StopLogging",
       "cloudtrail:UpdateTrail",
-      "aws-portal:ModifyAccount",
-      "aws-portal:ModifyBilling",
-      "aws-portal:ModifyPaymentMethods"
+      "account:*",
+      "billing:*",
+      "payments:*"
     ]
     effect = "Deny"
     resources = [
