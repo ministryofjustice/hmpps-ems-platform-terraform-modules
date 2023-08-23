@@ -58,7 +58,6 @@ locals {
     }
   )
   default_group_membership = [
-    "MFA_plus_sec",
     "hmpps-mfa-users-group"
   ]
   group_membership = concat(local.default_group_membership, var.group_membership)
