@@ -97,6 +97,6 @@ variable "runbook_url" {
 
   validation {
     error_message = "The runbook url must contain the confluence domain."
-    condition     = can(regex("^https:\\/\\/dsdmoj\\.atlassian\\.net\\/wiki\\/spaces\\/E\\/pages\\/", var.pagerduty_integration_url))
+    condition     = can(regex("^https:\\/\\/dsdmoj\\.atlassian\\.net\\/wiki\\/spaces\\/E\\/pages\\/", var.runbook_url))
   }
 }
