@@ -15,10 +15,10 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   datapoints_to_alarm = var.datapoints_to_alarm
   treat_missing_data  = var.treat_missing_data
 
-  metric_name        = var.metric_name
-  namespace          = var.namespace
-  period             = var.period
-  statistic          = var.statistic
+  metric_name = var.metric_name
+  namespace   = var.namespace
+  period      = var.period
+  statistic   = var.statistic
 
   dimensions = var.dimensions
 
