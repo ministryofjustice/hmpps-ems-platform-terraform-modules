@@ -3,12 +3,6 @@ variable "alarm_name" {
   type        = string
 }
 
-variable "alarm_description" {
-  description = "The description for the alarm."
-  type        = string
-  default     = null
-}
-
 variable "comparison_operator" {
   description = "The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Either of the following is supported: GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, LessThanOrEqualToThreshold."
   type        = string
