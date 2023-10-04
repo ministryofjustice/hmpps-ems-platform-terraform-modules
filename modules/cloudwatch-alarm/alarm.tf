@@ -19,7 +19,6 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   namespace          = var.namespace
   period             = var.period
   statistic          = var.statistic
-  extended_statistic = var.extended_statistic
 
   dimensions = var.dimensions
 
