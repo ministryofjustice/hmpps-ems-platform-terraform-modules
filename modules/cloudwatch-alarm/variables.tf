@@ -98,10 +98,10 @@ variable "tags" {
 }
 
 variable "runbook_url" {
-    type = string
-    description = "The url to the runbook in confluence."
+  type        = string
+  description = "The url to the runbook in confluence."
 
-    validation {
+  validation {
     error_message = "The runbook url must contain the confluence domain."
     condition     = can(regex("^https:\\/\\/dsdmoj\\.atlassian\\.net\\/wiki\\/spaces\\/E\\/pages\\/", var.pagerduty_integration_url))
   }
