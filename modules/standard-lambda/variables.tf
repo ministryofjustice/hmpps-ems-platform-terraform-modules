@@ -49,6 +49,11 @@ variable "environment_variables" {
   default     = {}
 }
 
+variable "enable_schedule" {
+  type        = bool
+  description = "Enable a cloudwatch event to trigger the lambda function on a schedule"
+  default     = true
+}
 
 variable "trigger_schedule" {
   type        = string
