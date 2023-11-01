@@ -11,3 +11,14 @@ When a pull request is merged to main a new tag and release with the appropriate
 Versioning is managed by [GitVersion](https://gitversion.net/docs/) and uses the ContinuousDelivery configuraton.
 
 A current list of releases can be found on the [releases page](https://github.com/ministryofjustice/hmpps-ems-platform-terraform-modules/releases).
+
+### Assigning Releases
+
+Releases can be assigned and pushed as follows:
+
+    E.g. tag 0.1.34
+
+    ```shell
+        git tag 0.1.34
+        git push --tags
+    ```
