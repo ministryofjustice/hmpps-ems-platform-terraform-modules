@@ -16,7 +16,10 @@ data "aws_iam_policy_document" "assume" {
 
 
 data "aws_iam_policy_document" "lambda_policy" {
-  source_json = var.iam_policy
+
+  source_policy_documents = [
+    var.iam_policy,
+  ]
 
   statement {
     sid    = "AllowCloudwatchLogs"
