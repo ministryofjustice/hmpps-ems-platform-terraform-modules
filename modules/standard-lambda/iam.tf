@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "assume" {
 data "aws_iam_policy_document" "lambda_policy" {
 
   source_policy_documents = [
-    var.var.iam_policy,
+    var.iam_policy,
   ]
 
   statement {
