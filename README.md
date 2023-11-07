@@ -19,6 +19,9 @@ Releases can be assigned and pushed as follows:
     E.g. tag 0.1.34
 
     ```shell
+        # After merging PR to main branch
+        git checkout main
+        git pull
         git tag 0.1.34
         git push --tags
     ```
