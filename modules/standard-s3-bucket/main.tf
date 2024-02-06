@@ -1,6 +1,10 @@
 
 data "aws_iam_policy_document" "this" {
-  source_json = var.policy
+
+  source_policy_documents = [
+    var.policy,
+  ]
+
   statement {
     sid = "DenyInsecureTransport"
     actions = [
