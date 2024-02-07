@@ -22,6 +22,13 @@ variable "email" {
 }
 
 
+variable "cjsm_email" {
+  type        = string
+  description = "The users cjsm email address. Used for sending credentials."
+  default     = ""
+}
+
+
 variable "group_membership" {
   type        = list(string)
   description = "A list of groups that the user will be added to. Every user will automatically be added to the MFA group."
@@ -54,6 +61,7 @@ locals {
     {
       organisation = var.organisation
       email        = var.email
+      cjsm_email   = var.cjsm_email
       name         = var.full_name
     }
   )
