@@ -23,7 +23,7 @@ variable "email" {
 
 
 variable "cjsm_email" {
-  type        = optional(string)
+  type        = string
   description = "The users cjsm email address. Used for sending credentials."
   default     = ""
 }
