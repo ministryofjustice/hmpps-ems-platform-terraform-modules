@@ -61,6 +61,7 @@ locals {
     {
       organisation = var.organisation
       email        = var.email
+      cjsm_email   = var.cjsm_email
       name         = var.full_name
     }
   )
