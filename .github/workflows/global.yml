@@ -35,7 +35,7 @@ jobs:
   terraform_lint:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/ministryofjustice/hmpps-ems-actions-toolkit:0.0.1
+      image: ghcr.io/ministryofjustice/hmpps-ems-devcontainer
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -45,3 +45,18 @@ jobs:
 
       - name: "Terraform fmt check"
         run: terraform fmt -check -recursive
+
+  terraform_validate:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/ministryofjustice/hmpps-ems-devcontainer
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: List all modules
+        run: 
+          ls modules | jq -R -s -c 'split("\n")[:-1]') | while read MODULE; do
+            terrafom init -backend=false
+            terraform validate
+          done
