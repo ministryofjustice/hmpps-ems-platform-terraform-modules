@@ -1,24 +1,40 @@
 variable "username" {
   type        = string
   description = "The name of the user."
+  validation {
+  condition     = length(var.username) > 0
+  error_message = "As per https://github.com/hashicorp/terraform-provider-aws/issues/31941 tags cannot currently be empty strings."
+  }
 }
 
 
 variable "full_name" {
   type        = string
   description = "The users full name. Used for resource tagging."
+  validation {
+  condition     = length(var.full_name) > 0
+  error_message = "As per https://github.com/hashicorp/terraform-provider-aws/issues/31941 tags cannot currently be empty strings."
+  }
 }
 
 
 variable "organisation" {
   type        = string
   description = "The users organisation. Used for resource tagging."
+  validation {
+  condition     = length(var.organisation) > 0
+  error_message = "As per https://github.com/hashicorp/terraform-provider-aws/issues/31941 tags cannot currently be empty strings."
+  }
 }
 
 
 variable "email" {
   type        = string
   description = "The users email address. Used for resource tagging."
+  validation {
+  condition     = length(var.email) > 0
+  error_message = "As per https://github.com/hashicorp/terraform-provider-aws/issues/31941 tags cannot currently be empty strings."
+  }
 }
 
 
@@ -26,6 +42,10 @@ variable "cjsm_email" {
   type        = string
   description = "The users cjsm email address. Used for sending credentials."
   default     = "Unknown or to be confirmed"
+  validation {
+  condition     = length(var.cjsm_email) > 0
+  error_message = "As per https://github.com/hashicorp/terraform-provider-aws/issues/31941 tags cannot currently be empty strings."
+  }
 }
 
 
@@ -40,6 +60,10 @@ variable "path" {
   type        = string
   description = "The path to assign to the created user."
   default     = "/"
+  validation {
+  condition     = length(var.path) > 0
+  error_message = "As per https://github.com/hashicorp/terraform-provider-aws/issues/31941 tags cannot currently be empty strings."
+  }
 }
 
 
