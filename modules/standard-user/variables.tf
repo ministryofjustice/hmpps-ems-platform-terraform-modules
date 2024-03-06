@@ -25,7 +25,7 @@ variable "email" {
 variable "cjsm_email" {
   type        = string
   description = "The users cjsm email address. Used for sending credentials."
-  default     = ""
+  default     = "Unknown or to be confirmed"
 }
 
 
