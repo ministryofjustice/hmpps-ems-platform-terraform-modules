@@ -9,7 +9,7 @@ variable "processing_role_arn" {
 
   validation {
     error_message = "The value must be the arn of an AWS role."
-    condition     = regex("^arn:aws:iam::\\d{12}?:role/[\\w+=,.@-]{1,64}$", var.processing_role_arn)
+    condition     = can(regex("^arn:aws:iam::\\d{12}?:role/[\\w+=,.@-]{1,64}$", var.processing_role_arn))
   }
 }
 
@@ -19,7 +19,7 @@ variable "publishing_bucket_arn" {
 
   validation {
     error_message = "The value must be the arn of an S3 bucket."
-    condition     = regex("^arn:aws:s3:::[\\w+=,.@-]{3,63}$", var.publishing_bucket_arn)
+    condition     = can(regex("^arn:aws:s3:::[\\w+=,.@-]{3,63}$", var.publishing_bucket_arn))
   }
 }
 
