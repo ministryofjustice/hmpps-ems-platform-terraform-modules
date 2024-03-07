@@ -1,7 +1,7 @@
 resource "aws_iam_role" "this" {
   name               = "${var.name_prefix}-security-operations-centre-role"
   description        = "Delegate access to security operations centre  to process security events."
-  assume_role_policy = data.aws_iam_policy_document.e2e_assure_log_processor.json
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
   tags               = var.tags
 }
 
