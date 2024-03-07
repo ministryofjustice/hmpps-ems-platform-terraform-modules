@@ -1,39 +1,45 @@
 locals {
   download_s3_objects = {
-    sid    = "DownloadObjects"
-    effect = "Allow"
+    DownloadObjects = {
+      effect = "Allow"
 
-    actions = [
-      "s3:GetObject",
-      "s3:GetObjectVersion",
+      actions = [
+        "s3:GetObject",
+        "s3:GetObjectVersion",
 
-    ]
+      ]
 
-    resources = formatlist("%s/*", var.s3_access.bucket_arns)
+      resources = formatlist("%s/*", var.s3_access.bucket_arns)
+    }
+
   }
 
   list_s3_objects = {
-    sid    = "ListObjects"
-    effect = "Allow"
+    ListObjects = {
+      effect = "Allow"
 
-    actions = [
-      "s3:ListBucket",
-      "s3:GetBucketLocation",
-    ]
+      actions = [
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+      ]
 
-    resources = var.s3_access.bucket_arns
+      resources = var.s3_access.bucket_arns
+    }
+
   }
 
   process_sqs_messages = {
-    sid    = "ProcessQueueMessages"
-    effect = "Allow"
+    ProcessQueueMessages = {
+      effect = "Allow"
 
-    actions = [
-      "sqs:DeleteMessage",
-      "sqs:ReceiveMessage",
-    ]
+      actions = [
+        "sqs:DeleteMessage",
+        "sqs:ReceiveMessage",
+      ]
 
-    resources = var.sqs_access.queue_arns
+      resources = var.sqs_access.queue_arns
+    }
+
   }
 
   policy_statements = merge(
@@ -54,7 +60,7 @@ data "aws_iam_policy_document" "this" {
   dynamic "statement" {
     for_each = local.policy_statements
     content {
-      sid       = statement.value["sid"]
+      sid       = statement.key
       effect    = statement.value["effect"]
       actions   = statement.value["actions"]
       resources = statement.value["resources"]
