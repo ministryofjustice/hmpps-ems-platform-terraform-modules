@@ -1,6 +1,6 @@
 # Security Operations Centre Role
 
-A reusable, configurable role that can be easily deployed into an AWS account that grants access to seceurity events.
+A reusable, configurable role that can be easily deployed into an AWS account that grants access to security events.
 
 Currently supported:
 - Processing of logs in the shared logging environment
@@ -8,8 +8,8 @@ Currently supported:
   - Access to SQS Queues containing notifications of S3 Object Created Events
 
 Possible additions:
-- Proccessing of security events from AWS APIs
+- Processing of security events from AWS APIs
   - GuardDuty
   - SecurityHub
-- Asset colletion
+- Asset collection
   - EC2 Instance Metadata
