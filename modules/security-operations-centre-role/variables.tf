@@ -3,8 +3,20 @@ variable "name_prefix" {
   type        = string
 }
 
+variable "enable_security_hub_access" {
+  description = "Attach a policy statement that enables access to the security hub api."
+  type        = bool
+  default     = false
+}
+
+variable "enable_ec2_asset_collection" {
+  description = "Attach a policy statement that enables access to ec2 metadata"
+  type        = bool
+  default     = false
+}
+
 variable "s3_access" {
-  description = "Attach a policy to the role that enables access to the specified S3 buckets"
+  description = "Attach a policy to the role that enables access to the specified S3 buckets."
   type = object({
     enabled     = bool
     bucket_arns = list(string)
