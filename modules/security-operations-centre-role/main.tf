@@ -1,11 +1,11 @@
 resource "aws_iam_role" "this" {
   name               = "${var.name_prefix}-security-operations-centre-role"
-  description        = "Delegate access to security operations centre  to process security events."
+  description        = "Delegate access to security operations centre to process security events."
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
   tags               = var.tags
 }
 
-// EternalId is visible in the console, no point in making it secret
+// ExternalId is visible in the console, no point in making it secret
 resource "random_string" "externalid" {
   length  = 16
   special = true
