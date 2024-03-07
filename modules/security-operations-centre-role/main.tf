@@ -7,8 +7,8 @@ resource "aws_iam_role" "this" {
 
 // ExternalId is visible in the console, no point in making it secret
 resource "random_string" "externalid" {
-  length  = 16
-  special = true
+  length           = 16
+  special          = true
   override_special = "+=,.@:/-"
 }
 
