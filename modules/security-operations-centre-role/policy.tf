@@ -11,7 +11,23 @@ locals {
 
       resources = formatlist("%s/*", var.s3_access.bucket_arns)
     }
+  }
 
+  ec2_asset_collection = {
+    EC2AssetCollection = {
+      effect = "Allow"
+
+      actions = [
+        "ec2:DescribeInsights",
+        "ec2:DescribeRegions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+      ]
+
+      resources = [
+        "*"
+      ]
+    }
   }
 
   list_s3_objects = {
@@ -25,7 +41,6 @@ locals {
 
       resources = var.s3_access.bucket_arns
     }
-
   }
 
   process_sqs_messages = {
@@ -39,13 +54,35 @@ locals {
 
       resources = var.sqs_access.queue_arns
     }
+  }
 
+  security_hub_api = {
+    ProcessSecurityHubFindings = {
+      effect = "Allow"
+
+      actions = [
+        "securityhub:BatchUpdateFindings",
+        "securityhub:DescribeProducts",
+        "securityhub:DescribeStandards",
+        "securityhub:DescribeStandardsControls",
+        "securityhub:GetEnabledStandards",
+        "securityhub:GetFindings",
+        "securityhub:GetInsights",
+        "securityhub:GetInsightResults",
+      ]
+
+      resources = [
+        "*"
+      ]
+    }
   }
 
   policy_statements = merge(
     [local.download_s3_objects, {}][var.s3_access.enabled ? 0 : 1],
+    [local.ec2_asset_collection, {}][var.enable_ec2_asset_collection ? 0 : 1],
     [local.list_s3_objects, {}][var.s3_access.enabled ? 0 : 1],
     [local.process_sqs_messages, {}][var.sqs_access.enabled ? 0 : 1],
+    [local.security_hub_api, {}][var.enable_security_hub_access ? 0 : 1],
   )
 }
 
