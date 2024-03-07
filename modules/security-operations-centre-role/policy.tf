@@ -37,9 +37,9 @@ locals {
   }
 
   policy_statements = merge(
-    var.s3_access.enabled ? local.download_s3_objects : {},
-    var.s3_access.enabled ? local.list_s3_objects : {},
-    var.sqs_access.enabled ? local.process_sqs_messages : {}
+    [local.download_s3_objects, {}][var.s3_access.enabled ? 0 : 1],
+    [local.list_s3_objects, {}][var.s3_access.enabled ? 0 : 1],
+    [local.process_sqs_messages, {}][var.sqs_access.enabled ? 0 : 1],
   )
 }
 
