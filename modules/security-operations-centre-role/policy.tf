@@ -65,6 +65,7 @@ locals {
 
       actions = [
         "sqs:DeleteMessage",
+        "sqs:GetQueueUrl",
         "sqs:ReceiveMessage",
       ]
 
