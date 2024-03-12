@@ -18,10 +18,26 @@ locals {
       effect = "Allow"
 
       actions = [
-        "ec2:DescribeInsights",
+        "ec2:DescribeInstances",
         "ec2:DescribeRegions",
         "ec2:DescribeSubnets",
         "ec2:DescribeVpcs",
+      ]
+
+      resources = [
+        "*"
+      ]
+    }
+  }
+
+  guardduty_access = {
+    GuardDutyAPIAccess = {
+      effect = "Allow"
+
+      actions = [
+        "guardduty:ListDetectors",
+        "guardduty:ListFindings",
+        "guardduty:GetFindings",
       ]
 
       resources = [
@@ -80,6 +96,7 @@ locals {
   policy_statements = merge(
     [local.download_s3_objects, {}][var.s3_access.enabled ? 0 : 1],
     [local.ec2_asset_collection, {}][var.enable_ec2_asset_collection ? 0 : 1],
+    [local.guardduty_access, {}][var.enable_guardduty_access ? 0 : 1],
     [local.list_s3_objects, {}][var.s3_access.enabled ? 0 : 1],
     [local.process_sqs_messages, {}][var.sqs_access.enabled ? 0 : 1],
     [local.security_hub_api, {}][var.enable_security_hub_access ? 0 : 1],
