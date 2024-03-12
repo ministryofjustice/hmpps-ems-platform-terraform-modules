@@ -15,6 +15,12 @@ variable "enable_ec2_asset_collection" {
   default     = false
 }
 
+variable "enable_guardduty_access" {
+  description = "Attach a policy statement that enables access to the Guard Duty API"
+  type        = bool
+  default     = false
+}
+
 variable "s3_access" {
   description = "Attach a policy to the role that enables access to the specified S3 buckets."
   type = object({
