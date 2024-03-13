@@ -3,7 +3,7 @@ data "aws_iam_policy_document" "this" {
     sid = "AllowBucketToPubishEvents"
 
     actions = [
-      "SQS:SendMessage"
+      "sqs:SendMessage"
     ]
 
     principals {
@@ -39,8 +39,9 @@ data "aws_iam_policy_document" "this" {
     sid = "AllowProcessorToReceiveDeleteEvents"
 
     actions = [
-      "SQS:DeleteMessage",
-      "SQS:ReceiveMessage",
+      "sqs:DeleteMessage",
+      "sqs:ReceiveMessage",
+      "sqs:GetQueueUrl",
     ]
 
     effect = "Allow"
