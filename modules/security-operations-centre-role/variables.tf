@@ -22,14 +22,16 @@ variable "enable_guardduty_access" {
 }
 
 variable "s3_access" {
-  description = "Attach a policy to the role that enables access to the specified S3 buckets."
+  description = "Attach a policy to the role that enables access to the specified S3 buckets and allows decyption of S3 objects."
   type = object({
     enabled     = bool
     bucket_arns = list(string)
+    kms_keys    = list(string)
   })
   default = {
     enabled     = false
     bucket_arns = []
+    kms_keys    = []
   }
 }
 
