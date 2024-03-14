@@ -1,14 +1,16 @@
 locals {
   # Enable the decryption of S3 objects
   decrypt_logs = {
-    effect = "Allow"
+    DecryptLogs = {
+      effect = "Allow"
 
-    actions = [
-      "kms:Decrypt*",
-      "kms:Describe*",
-    ]
+      actions = [
+        "kms:Decrypt*",
+        "kms:Describe*",
+      ]
 
-    resources = var.s3_access.kms_keys
+      resources = var.s3_access.kms_keys
+    }
   }
 
   download_s3_objects = {
