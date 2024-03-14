@@ -9,6 +9,7 @@ data "aws_iam_policy_document" "kms" {
     }
     resources = ["*"]
   }
+
   statement {
     sid     = "AllowCloudTrailEncryption"
     effect  = "Allow"
@@ -24,6 +25,7 @@ data "aws_iam_policy_document" "kms" {
       values   = ["arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"]
     }
   }
+
   statement {
     sid     = "AllowCloudTrailDescribeKey"
     effect  = "Allow"
@@ -34,6 +36,7 @@ data "aws_iam_policy_document" "kms" {
     }
     resources = ["*"]
   }
+
   statement {
     sid     = "AllowPrincipalDecryption"
     effect  = "Allow"
@@ -54,6 +57,7 @@ data "aws_iam_policy_document" "kms" {
       values   = ["arn:aws:cloudtrail:*:${data.aws_caller_identity.current.account_id}:trail/*"]
     }
   }
+
   statement {
     sid     = "AllowCloudWatchLogsGroup"
     effect  = "Allow"
@@ -69,13 +73,14 @@ data "aws_iam_policy_document" "kms" {
       values   = ["arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.cloudwatch_log_group_name}"]
     }
   }
+
   statement {
-    sid     = "AllowQinetiQProMonAccess"
+    sid     = "AllowSOCAccess"
     effect  = "Allow"
     actions = ["kms:Encrypt*", "kms:Decrypt*", "kms:ReEncrypt*", "kms:GenerateDataKey*", "kms:Describe*"]
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::552036846659:root"]
+      identifiers = ["arn:aws:iam::898412348835:role/hmpps-sl-security-operations-centre-role"]
     }
     resources = ["*"]
   }
