@@ -1,0 +1,18 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+  "image": "ghcr.io/ministryofjustice/hmpps-ems-devcontainer",
+  "mounts": [
+    "source=hmpps-ems-platform-zhistory,target=/commandhistory,type=volume",
+    "source=hmpps-ems-platform-asdf-installs,target=/opt/asdf/installs,type=volume",
+    "source=hmpps-ems-platform-asdf-shims,target=/opt/asdf/shims,type=volume"
+  ],
+  "runArgs": ["--network=host"],
+  "features": {}
+}
