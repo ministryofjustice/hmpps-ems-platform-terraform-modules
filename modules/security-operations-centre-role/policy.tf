@@ -1,4 +1,16 @@
 locals {
+  # Enable the decryption of S3 objects
+  decrypt_logs = {
+    effect = "Allow"
+
+    actions = [
+      "kms:Decrypt*",
+      "kms:Describe*",
+    ]
+
+    resources = var.s3_access.kms_keys
+  }
+
   download_s3_objects = {
     DownloadObjects = {
       effect = "Allow"
@@ -6,7 +18,6 @@ locals {
       actions = [
         "s3:GetObject",
         "s3:GetObjectVersion",
-
       ]
 
       resources = formatlist("%s/*", var.s3_access.bucket_arns)
@@ -66,6 +77,7 @@ locals {
       actions = [
         "sqs:DeleteMessage",
         "sqs:GetQueueUrl",
+        "sqs:GetQueueAttributes",
         "sqs:ReceiveMessage",
       ]
 
