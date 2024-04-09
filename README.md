@@ -4,24 +4,29 @@ This repository contains terraform modules that are consumed by [hmpps-ems-platf
 
 ## Releasing
 
-Features should be developed on new short-lived branches. Once a feature is ready to release, open a pull request. The pull request will need to be reviewed and approved by a [CODEOWNER](.github/CODEOWNERS) before it can be merged.
+Releases are automatically drafted by the `draft-release.yml` workflow. This includes updating the release notes and updating the published version tag. Every push to the main branch will cause the draft release to be updated. The semantic version is automatically incremented depending on the labels associated with the latest pull requests merged to the main branch.
 
-When a pull request is merged to main a new tag and release with the appropriate version number.
+```yaml
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+```
 
-Versioning is managed by [GitVersion](https://gitversion.net/docs/) and uses the ContinuousDelivery configuraton.
+Release notes are generated from the pull request titles associated with the release so it is good practice to create clear, concise titles that descibe the changes being made. Frequent, small pull requests will help to ensure that release notes are useful to end users.
 
 A current list of releases can be found on the [releases page](https://github.com/ministryofjustice/hmpps-ems-platform-terraform-modules/releases).
 
-### Assigning Releases
+### Publishing Releases
 
-Releases can be assigned and pushed as follows:
+Ensure that the release notes make sense to a entity using these terraform modules. If necessary, make changes to improve readability.
 
-    E.g. tag 0.1.34
-
-    ```shell
-        # After merging PR to main branch
-        git checkout main
-        git pull
-        git tag 0.1.34
-        git push --tags
-    ```
+- Navigate to the releases page and open the current draft release. 
+- Click publish release.
