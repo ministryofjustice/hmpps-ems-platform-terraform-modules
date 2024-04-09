@@ -28,5 +28,5 @@ A current list of releases can be found on the [releases page](https://github.co
 
 Ensure that the release notes make sense to a entity using these terraform modules. If necessary, make changes to improve readability.
 
-- Navigate to the releases page and open the current draft release. 
+- Navigate to the releases page and open the current draft release.
 - Click publish release.
