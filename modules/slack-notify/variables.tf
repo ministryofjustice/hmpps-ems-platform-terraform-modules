@@ -14,11 +14,11 @@ variable "current_account" {
 }
 
 variable "slack_webhook_url" {
-    description = "Webhook URL for slack channel"
-    type = string
+  description = "Webhook URL for slack channel"
+  type        = string
 }
 
 variable "slack_username" {
-    description = "Username for account on slack"
-    type = string
+  description = "Username for account on slack"
+  type        = string
 }
