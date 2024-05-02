@@ -9,6 +9,6 @@ variable "tags" {
 }
 
 variable "current_account" {
-    description = "Account name prefix"
-    type        = string
+  description = "Account name prefix"
+  type        = string
 }
