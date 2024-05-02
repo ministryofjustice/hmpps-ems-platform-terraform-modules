@@ -17,8 +17,8 @@ data "aws_iam_policy_document" "this" {
 }
 
 resource "aws_iam_role_policy" "this" {
-  name        = "lambda-policy-20200305133200561500000002"
-  role        = aws_iam_role.this.id
+  name = "lambda-policy-20200305133200561500000002"
+  role = aws_iam_role.this.id
   policy = jsonencode({
     Statement = [{
       Sid    = "AllowWriteToCloudwatchLogs"
