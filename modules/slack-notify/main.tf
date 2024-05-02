@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "this" {
 resource "aws_iam_role_policy" "this" {
   name        = "lambda-policy-20200305133200561500000002"
   description = "Gives the lambda access to write cloudwatch logs"
-  role        = aws_iam_role.lambda20200305133159295200000001.id
+  role        = aws_iam_role.this.id
   policy = jsonencode({
     Statement = [{
       Sid    = "AllowWriteToCloudwatchLogs"
@@ -72,7 +72,7 @@ module "notify_slack" {
 
   lambda_role = "arn:aws:iam::${var.account_number}:role/lambda20200305133159295200000001"
 
-  slack_webhook_url = secrets.SLACK_WEBHOOK_URL
+  slack_webhook_url = var.slack_webhook_url
   slack_channel     = "elmon-aws-alerts"
   slack_username    = var.current_account
   tags              = var.tags
