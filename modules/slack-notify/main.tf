@@ -72,7 +72,7 @@ module "notify_slack" {
 
   lambda_role = "arn:aws:iam::${var.current_account}:role/lambda20200305133159295200000001"
 
-  slack_webhook_url = "https://hooks.slack.com/services/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"
+  slack_webhook_url = ${{ secrets.SLACK_WEBHOOK_URL }}
   slack_channel     = "elmon-aws-alerts"
   slack_username    = var.current_account
   tags              = var.tags
