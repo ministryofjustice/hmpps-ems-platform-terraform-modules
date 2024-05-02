@@ -28,7 +28,7 @@ resource "aws_iam_role_policy" "this" {
         "logs:PutLogEvents",
         "logs:CreateLogStream"
       ]
-      Resource = "arn:aws:logs:eu-west-2:${var.current_account}:log-group:/aws/lambda/notify_slack:*"
+      Resource = "arn:aws:logs:eu-west-2:${var.account_number}:log-group:/aws/lambda/notify_slack:*"
       Version  = "2012-10-17"
     }]
   })
@@ -53,7 +53,7 @@ data "aws_iam_policy_document" "topic_assume_policy" {
       "SNS:Publish",
       "SNS:Receive"
     ]
-    resources = ["arn:aws:sns:eu-west-2:${var.current_account}:alarms-topic-slack"]
+    resources = ["arn:aws:sns:eu-west-2:${var.account_number}:alarms-topic-slack"]
   }
 }
 
@@ -70,7 +70,7 @@ module "notify_slack" {
   sns_topic_name   = "alarms-topic-slack"
   create_sns_topic = false
 
-  lambda_role = "arn:aws:iam::${var.current_account}:role/lambda20200305133159295200000001"
+  lambda_role = "arn:aws:iam::${var.account_number}:role/lambda20200305133159295200000001"
 
   slack_webhook_url = secrets.SLACK_WEBHOOK_URL
   slack_channel     = "elmon-aws-alerts"
