@@ -18,7 +18,7 @@ variable "slack_webhook_url" {
   type        = string
 }
 
-variable "slack_username" {
+variable "slack_channel" {
   description = "Username for account on slack"
   type        = string
 }
