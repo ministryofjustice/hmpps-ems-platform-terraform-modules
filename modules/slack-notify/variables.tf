@@ -4,8 +4,8 @@ variable "account_number" {
 }
 
 variable "tags" {
-  type        = map(string)
   description = "A map of tags that will be applied to provisioned resources."
+  type        = map(string)
 }
 
 variable "current_account" {
