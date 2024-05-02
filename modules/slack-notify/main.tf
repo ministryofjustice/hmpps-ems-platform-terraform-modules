@@ -1,7 +1,7 @@
 resource "aws_iam_role" "this" {
-    name = "lambda20200305133159295200000001"
-    assume_role_policy = data.aws_iam_policy_document.this.json
-    tags = var.tags
+  name               = "lambda20200305133159295200000001"
+  assume_role_policy = data.aws_iam_policy_document.this.json
+  tags               = var.tags
 }
 
 data "aws_iam_policy_document" "this" {
@@ -17,9 +17,9 @@ data "aws_iam_policy_document" "this" {
 }
 
 resource "aws_iam_role_policy" "this" {
-  name = "lambda-policy-20200305133200561500000002"
+  name        = "lambda-policy-20200305133200561500000002"
   description = "Gives the lambda access to write cloudwatch logs"
-  role = aws_iam_role.lambda20200305133159295200000001.id
+  role        = aws_iam_role.lambda20200305133159295200000001.id
   policy = jsonencode({
     Statement = [{
       Sid    = "AllowWriteToCloudwatchLogs"
@@ -58,9 +58,9 @@ data "aws_iam_policy_document" "topic_assume_policy" {
 }
 
 resource "aws_sns_topic" "alarm-topic-slack" {
-  name                                     = "alarms-topic-slack"
-  tags                                     = var.tags
-  policy                                   = data.aws_iam_policy_document.topic_assume_policy.json
+  name   = "alarms-topic-slack"
+  tags   = var.tags
+  policy = data.aws_iam_policy_document.topic_assume_policy.json
 }
 
 module "notify_slack" {
