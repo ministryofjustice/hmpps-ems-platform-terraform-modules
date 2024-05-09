@@ -4,6 +4,10 @@ resource "aws_iam_role" "this" {
   tags               = var.tags
 }
 
+data "aws_caller_identity" "current" {
+
+}
+
 data "aws_iam_policy_document" "this" {
   statement {
     sid     = ""
@@ -19,6 +23,7 @@ data "aws_iam_policy_document" "this" {
 resource "aws_iam_role_policy" "this" {
   name = "lambda-policy-20200305133200561500000002"
   role = aws_iam_role.this.id
+  account = data.aws_caller_identity.current.account_id
   policy = jsonencode({
     Statement = [{
       Sid    = "AllowWriteToCloudwatchLogs"
@@ -27,13 +32,14 @@ resource "aws_iam_role_policy" "this" {
         "logs:PutLogEvents",
         "logs:CreateLogStream"
       ]
-      Resource = "arn:aws:logs:eu-west-2:${var.account_number}:log-group:/aws/lambda/notify_slack:*"
+      Resource = "arn:aws:logs:eu-west-2:${account}:log-group:/aws/lambda/notify_slack:*"
       Version  = "2012-10-17"
     }]
   })
 }
 
 data "aws_iam_policy_document" "topic_assume_policy" {
+  account = data.aws_caller_identity.current.account_id
   statement {
     sid    = "__default_statement_ID"
     effect = "Allow"
@@ -52,7 +58,7 @@ data "aws_iam_policy_document" "topic_assume_policy" {
       "SNS:Publish",
       "SNS:Receive"
     ]
-    resources = ["arn:aws:sns:eu-west-2:${var.account_number}:alarms-topic-slack"]
+    resources = ["arn:aws:sns:eu-west-2:${account}:alarms-topic-slack"]
   }
 }
 
@@ -65,14 +71,15 @@ resource "aws_sns_topic" "alarm-topic-slack" {
 module "notify_slack" {
   source  = "terraform-aws-modules/notify-slack/aws"
   version = "~> 6.4"
+  account = data.aws_caller_identity.current.account_id
 
   sns_topic_name   = "alarms-topic-slack"
   create_sns_topic = false
 
-  lambda_role = "arn:aws:iam::${var.account_number}:role/lambda20200305133159295200000001"
+  lambda_role = "arn:aws:iam::${account}:role/lambda20200305133159295200000001"
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
-  slack_username    = var.current_account
+  slack_username    = var.slack_username
   tags              = var.tags
 }
