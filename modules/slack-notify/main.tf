@@ -1,11 +1,12 @@
+data "aws_caller_identity" "current" {
+
+}
+
 resource "aws_iam_role" "this" {
   name               = "lambda20200305133159295200000001"
   assume_role_policy = data.aws_iam_policy_document.this.json
   tags               = var.tags
-}
-
-data "aws_caller_identity" "current" {
-
+  account = data.aws_caller_identity.current.account_id
 }
 
 data "aws_iam_policy_document" "this" {
@@ -23,7 +24,6 @@ data "aws_iam_policy_document" "this" {
 resource "aws_iam_role_policy" "this" {
   name = "lambda-policy-20200305133200561500000002"
   role = aws_iam_role.this.id
-  account = data.aws_caller_identity.current.account_id
   policy = jsonencode({
     Statement = [{
       Sid    = "AllowWriteToCloudwatchLogs"
@@ -32,7 +32,7 @@ resource "aws_iam_role_policy" "this" {
         "logs:PutLogEvents",
         "logs:CreateLogStream"
       ]
-      Resource = "arn:aws:logs:eu-west-2:${this.account}:log-group:/aws/lambda/notify_slack:*"
+      Resource = "arn:aws:logs:eu-west-2:${resource.aws_iam_role.this.account}:log-group:/aws/lambda/notify_slack:*"
       Version  = "2012-10-17"
     }]
   })
@@ -58,7 +58,7 @@ data "aws_iam_policy_document" "topic_assume_policy" {
       "SNS:Publish",
       "SNS:Receive"
     ]
-    resources = ["arn:aws:sns:eu-west-2:${account}:alarms-topic-slack"]
+    resources = ["arn:aws:sns:eu-west-2:${resource.aws_iam_role.this.account}:alarms-topic-slack"]
   }
 }
 
@@ -75,7 +75,7 @@ module "notify_slack" {
   sns_topic_name   = "alarms-topic-slack"
   create_sns_topic = false
 
-  lambda_role = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/lambda20200305133159295200000001"
+  lambda_role = "arn:aws:iam::${resource.aws_iam_role.this.account}:role/lambda20200305133159295200000001"
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
