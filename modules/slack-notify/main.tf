@@ -32,7 +32,7 @@ resource "aws_iam_role_policy" "this" {
         "logs:PutLogEvents",
         "logs:CreateLogStream"
       ]
-      Resource = "arn:aws:logs:eu-west-2:${account}:log-group:/aws/lambda/notify_slack:*"
+      Resource = "arn:aws:logs:eu-west-2:${this.account}:log-group:/aws/lambda/notify_slack:*"
       Version  = "2012-10-17"
     }]
   })
