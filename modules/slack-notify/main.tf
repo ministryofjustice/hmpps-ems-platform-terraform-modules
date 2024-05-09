@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "this" {
 
 data "aws_iam_policy_document" "topic_assume_policy" {
   statement {
-    id    = "__default_statement_ID"
+    sid    = "__default_statement_ID"
     effect = "Allow"
     principals {
       type        = "AWS"
@@ -52,11 +52,6 @@ data "aws_iam_policy_document" "topic_assume_policy" {
       "SNS:Publish",
       "SNS:Receive"
     ]
-    Condition = {
-      StringEquals = {
-        "AWS:SourceOwner" = "${var.account_number}"
-        }
-    }
     resources = ["arn:aws:sns:eu-west-2:${var.account_number}:alarms-topic-slack"]
   }
 }
