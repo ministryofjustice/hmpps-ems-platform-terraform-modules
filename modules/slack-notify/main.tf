@@ -2,7 +2,7 @@ data "aws_caller_identity" "current" {
 
 }
 
-data "account" "this" {
+data "null_data_source" "this" {
   account = data.aws_caller_identity.current.account_id
 }
 
@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "this" {
         "logs:PutLogEvents",
         "logs:CreateLogStream"
       ]
-      Resource = "arn:aws:logs:eu-west-2:${data.account.this.account}:log-group:/aws/lambda/notify_slack:*"
+      Resource = "arn:aws:logs:eu-west-2:${data.null_data_source.this.account}:log-group:/aws/lambda/notify_slack:*"
       Version  = "2012-10-17"
     }]
   })
@@ -60,7 +60,7 @@ data "aws_iam_policy_document" "topic_assume_policy" {
       "SNS:Publish",
       "SNS:Receive"
     ]
-    resources = ["arn:aws:sns:eu-west-2:${data.account.this.account}:alarms-topic-slack"]
+    resources = ["arn:aws:sns:eu-west-2:${data.null_data_source.this.account}:alarms-topic-slack"]
   }
 }
 
@@ -77,7 +77,7 @@ module "notify_slack" {
   sns_topic_name   = "alarms-topic-slack"
   create_sns_topic = false
 
-  lambda_role = "arn:aws:iam::${data.account.this.account}:role/lambda20200305133159295200000001"
+  lambda_role = "arn:aws:iam::${data.null_data_source.this.account}:role/lambda20200305133159295200000001"
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
