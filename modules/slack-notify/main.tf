@@ -71,12 +71,11 @@ resource "aws_sns_topic" "alarm-topic-slack" {
 module "notify_slack" {
   source  = "terraform-aws-modules/notify-slack/aws"
   version = "~> 6.4"
-  account = data.aws_caller_identity.current.account_id
 
   sns_topic_name   = "alarms-topic-slack"
   create_sns_topic = false
 
-  lambda_role = "arn:aws:iam::${account}:role/lambda20200305133159295200000001"
+  lambda_role = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/lambda20200305133159295200000001"
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
