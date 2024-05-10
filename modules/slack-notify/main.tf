@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "this" {
 }
 
 resource "aws_iam_role_policy" "this" {
-  name = "lambda-policy-20200305133200561500000002"
+  name = "lambda-policy-${var.role_name}"
   role = aws_iam_role.this.id
   policy = jsonencode({
     Statement = [{
@@ -76,7 +76,7 @@ module "notify_slack" {
   sns_topic_name   = "alarms-topic-slack"
   create_sns_topic = false
 
-  lambda_role = "arn:aws:iam::${local.account_id}:role/lambda20200305133159295200000001"
+  lambda_role = "arn:aws:iam::${local.account_id}:role/${var.role_name}"
 
   slack_webhook_url = var.slack_webhook_url
   slack_channel     = var.slack_channel
