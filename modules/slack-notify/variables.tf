@@ -17,3 +17,8 @@ variable "slack_channel" {
   description = "Username for account on slack"
   type        = string
 }
+
+variable "role_name" {
+    description = "The name for the lambda role"
+    type        = string
+}
