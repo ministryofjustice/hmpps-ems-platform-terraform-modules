@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "this" {
 }
 
 resource "aws_iam_role_policy" "this" {
-  name = "lambda-policy-${var.role_name}"
+  name = "lambda-policy-${var.policy_name}"
   role = aws_iam_role.this.id
   policy = jsonencode({
     Statement = [{
