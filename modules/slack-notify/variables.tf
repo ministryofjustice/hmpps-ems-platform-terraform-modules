@@ -22,3 +22,8 @@ variable "role_name" {
   description = "The name for the lambda role"
   type        = string
 }
+
+variable "policy_name" {
+  description = "The name for the lambda role policy"
+  type        = string
+}
