@@ -10,28 +10,13 @@ locals {
       width  = local.widget_width
       height = var.widget_height
 
-      properties = merge(
-        {
-            title = alarm.name
-        },
-        alarm.properties
-      )
-
-    #   properties = {
-    #     metrics = [
-    #       concat(
-    #         [
-    #           alarm.namespace,
-    #           alarm.metric_name
-    #         ],
-    #         flatten([for k, v in alarm.dimensions : [k, v]])
-    #       )
-    #     ]
-    #     period = alarm.period
-    #     stat   = alarm.statistic
-    #     region = data.aws_region.current.name
-    #     title  = alarm.name
-    #   }
+      properties = {
+        metrics = alarm.metrics
+        period  = alarm.period
+        stat    = alarm.stat
+        region  = data.aws_region.current.name
+        title   = alarm.name
+      }
     }
   ]
 
@@ -43,9 +28,9 @@ locals {
     height = 4,
     properties = {
       title = "Alarms",
-    #   alarms = [
-    #     for alarm in module.alarms : alarm.cloudwatch_metric_alarm_arn
-    #   ]
+      #   alarms = [
+      #     for alarm in module.alarms : alarm.cloudwatch_metric_alarm_arn
+      #   ]
     }
   }
 
