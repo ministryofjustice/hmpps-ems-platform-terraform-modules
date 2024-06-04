@@ -8,12 +8,9 @@ variable "metric_widgets" {
   default     = {}
   description = "List of CloudWatch Metric widgets to display."
   type = map(object({
-    dimensions  = map(string)
+   
     name        = string
-    namespace   = string
-    metric_name = string
-    period      = number
-    statistic   = string
+    properties = map(any)
   }))
 }
 

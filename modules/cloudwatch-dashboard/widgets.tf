@@ -10,21 +10,28 @@ locals {
       width  = local.widget_width
       height = var.widget_height
 
-      properties = {
-        metrics = [
-          concat(
-            [
-              alarm.namespace,
-              alarm.metric_name
-            ],
-            flatten([for k, v in alarm.dimensions : [k, v]])
-          )
-        ]
-        period = alarm.period
-        stat   = alarm.statistic
-        region = data.aws_region.current.name
-        title  = alarm.name
-      }
+      properties = merge(
+        {
+            title = alarm.name
+        },
+        alarm.properties
+      )
+
+    #   properties = {
+    #     metrics = [
+    #       concat(
+    #         [
+    #           alarm.namespace,
+    #           alarm.metric_name
+    #         ],
+    #         flatten([for k, v in alarm.dimensions : [k, v]])
+    #       )
+    #     ]
+    #     period = alarm.period
+    #     stat   = alarm.statistic
+    #     region = data.aws_region.current.name
+    #     title  = alarm.name
+    #   }
     }
   ]
 
