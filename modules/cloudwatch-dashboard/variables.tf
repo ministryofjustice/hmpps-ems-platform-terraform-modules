@@ -17,7 +17,7 @@ variable "metric_widgets" {
     stack     = optional(bool, false)
     start     = optional(string, "")
     end       = optional(string, "")
-    stat      = optional(string, "")
+    stat      = optional(string, "Average")
     period    = optional(number, 300)
   }))
 }
