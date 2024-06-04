@@ -12,7 +12,7 @@ variable "metric_widgets" {
     name        = string
     namespace   = string
     metric_name = string
-    period      = string
+    period      = number
     statistic   = string
   }))
 }
