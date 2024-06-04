@@ -10,7 +10,7 @@ variable "metric_widgets" {
   type = map(object({
    
     name        = string
-    properties = map(any)
+    properties = any
   }))
 }
 
