@@ -11,7 +11,7 @@ variable "metric_widgets" {
 
     name = string
 
-    metrics   = list(list(string))
+    metrics   = list(list(any))
     view      = optional(string, "timeSeries")
     sparkline = optional(bool, false)
     stack     = optional(bool, false)
