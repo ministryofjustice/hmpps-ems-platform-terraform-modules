@@ -5,9 +5,9 @@ variable "column_count" {
 }
 
 variable "metric_widgets" {
-  default     = []
+  default     = {}
   description = "List of CloudWatch Metric widgets to display."
-  type = list(object({
+  type = map(object({
     dimensions  = map(string)
     name        = string
     namespace   = string
