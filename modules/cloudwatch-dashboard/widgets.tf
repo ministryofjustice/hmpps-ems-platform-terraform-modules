@@ -16,6 +16,11 @@ locals {
         stat    = alarm.stat
         region  = data.aws_region.current.name
         title   = alarm.name
+        view = alarm.view
+        stack = alarm.stack
+        start = alarm.start
+        end = alarm.end
+        sparkline = alarm.sparkline
       }
     }
   ]

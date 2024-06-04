@@ -13,12 +13,12 @@ variable "metric_widgets" {
 
     metrics   = list(list(string))
     view      = optional(string, "timeSeries")
-    sparkline = optional(bool)
-    stack     = optional(bool)
-    start     = optional(string)
-    end       = optional(string)
-    stat      = optional(string)
-    period    = optional(number)
+    sparkline = optional(bool, false)
+    stack     = optional(bool, false)
+    start     = optional(string, "")
+    end       = optional(string, "")
+    stat      = optional(string, "")
+    period    = optional(number, 300)
   }))
 }
 
