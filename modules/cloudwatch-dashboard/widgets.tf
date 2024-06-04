@@ -36,14 +36,14 @@ locals {
     height = 4,
     properties = {
       title = "Alarms",
-      alarms = [
-        for alarm in module.alarms : alarm.cloudwatch_metric_alarm_arn
-      ]
+    #   alarms = [
+    #     for alarm in module.alarms : alarm.cloudwatch_metric_alarm_arn
+    #   ]
     }
   }
 
   widgets = concat(
-    [local.alarm_widget],
+    # [local.alarm_widget],
     local.metric_widgets
   )
 }
