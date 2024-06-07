@@ -1,7 +1,7 @@
 variable "alarm_widgets" {
   default     = []
   description = "List of CloudWatch Alarm ARNs to display at the top of the deashboard"
-  type        = list(str)
+  type        = list(string)
 }
 
 variable "column_count" {
