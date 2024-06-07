@@ -11,15 +11,15 @@ locals {
       height = var.widget_height
 
       properties = {
-        metrics = alarm.metrics
-        period  = alarm.period
-        stat    = alarm.stat
-        region  = data.aws_region.current.name
-        title   = alarm.name
-        view = alarm.view
-        stack = alarm.stack
-        start = alarm.start
-        end = alarm.end
+        metrics   = alarm.metrics
+        period    = alarm.period
+        stat      = alarm.stat
+        region    = data.aws_region.current.name
+        title     = alarm.name
+        view      = alarm.view
+        stack     = alarm.stack
+        start     = alarm.start
+        end       = alarm.end
         sparkline = alarm.sparkline
       }
     }
