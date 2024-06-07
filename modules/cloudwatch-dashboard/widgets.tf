@@ -3,7 +3,7 @@ locals {
   widget_width = local.max_width / var.column_count
 
   metric_widgets = [
-    for index, alarm in values(var.metric_widgets) : {
+    for index, alarm in var.metric_widgets : {
       type   = "metric"
       x      = (index % var.column_count) * local.widget_width
       y      = local.alarm_widget.y + floor(index / var.column_count) * var.widget_height
