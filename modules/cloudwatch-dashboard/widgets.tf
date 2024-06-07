@@ -25,22 +25,20 @@ locals {
     }
   ]
 
-  alarm_widget = {
+  alarms_widget = {
     type   = "alarm",
     x      = 0,
     y      = 0,
     width  = 24,
     height = 4,
     properties = {
-      title = "Alarms",
-      #   alarms = [
-      #     for alarm in module.alarms : alarm.cloudwatch_metric_alarm_arn
-      #   ]
+      title  = "Alarms",
+      alarms = var.alarm_widgets
     }
   }
 
   widgets = concat(
-    # [local.alarm_widget],
+    length(var.alarm_widgets) > 0 ? [local.alarms_widget] : [],
     local.metric_widgets
   )
 }

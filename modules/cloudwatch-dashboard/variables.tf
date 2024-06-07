@@ -1,3 +1,9 @@
+variable "alarm_widgets" {
+  default     = []
+  description = "List of CloudWatch Alarm ARNs to display at the top of the deashboard"
+  type        = list(str)
+}
+
 variable "column_count" {
   default     = 2
   description = "The number of columns in the dashboard. Widgets are sized to fill the entire column."
@@ -8,9 +14,7 @@ variable "metric_widgets" {
   default     = []
   description = "List of CloudWatch Metric widgets to display."
   type = list(object({
-
-    name = string
-
+    name      = string
     metrics   = list(list(any))
     view      = optional(string, "timeSeries")
     sparkline = optional(bool, false)
