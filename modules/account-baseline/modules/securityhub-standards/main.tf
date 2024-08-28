@@ -7,6 +7,7 @@ resource "aws_securityhub_standards_subscription" "aws-foundational" {
 
 # Enable Standard: CIS AWS Foundations
 resource "aws_securityhub_standards_subscription" "cis" {
-  standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/3.0.0"
+  standards_arn = "arn:aws:securityhub:${data.aws_region.current.name}::standards/cis-aws-foundations-benchmark/v/3.0.0"
+  
 }
 
