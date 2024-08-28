@@ -21,3 +21,8 @@ variable "enable_aws_config" {
   type    = string
   default = false
 }
+
+variable "enable_securityhub_standards" {
+  type = bool
+  default = false
+}
