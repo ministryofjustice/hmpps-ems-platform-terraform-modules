@@ -16,6 +16,7 @@ resource "aws_securityhub_standards_control" "default_aws_foundational_security_
   standards_control_arn = "arn:aws:securityhub:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:control/aws-foundational-security-best-practices/v/1.0.0/IAM.6"
   control_status        = "DISABLED"
   disabled_reason       = "Root user access is controlled by the hosting team."
+
   depends_on            = [
     aws_securityhub_standards_subscription.aws_foundational
   ]
@@ -26,6 +27,7 @@ resource "aws_securityhub_standards_control" "default_cis_aws_foundations_hardwa
   standards_control_arn = "arn:aws:securityhub:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:control/cis-aws-foundations-benchmark/v/1.2.0/1.14"
   control_status        = "DISABLED"
   disabled_reason       = "Root user access is controlled by the hosting team."
+
   depends_on            = [
     aws_securityhub_standards_subscription.cis
   ]
