@@ -17,7 +17,7 @@ resource "aws_securityhub_standards_control" "default_aws_foundational_security_
   control_status        = "DISABLED"
   disabled_reason       = "Root user access is controlled by the hosting team."
 
-  depends_on            = [
+  depends_on = [
     aws_securityhub_standards_subscription.aws_foundational
   ]
 }
@@ -28,7 +28,7 @@ resource "aws_securityhub_standards_control" "default_cis_aws_foundations_hardwa
   control_status        = "DISABLED"
   disabled_reason       = "Root user access is controlled by the hosting team."
 
-  depends_on            = [
+  depends_on = [
     aws_securityhub_standards_subscription.cis
   ]
 }

@@ -16,7 +16,7 @@ resource "aws_config_delivery_channel" "this" {
   name           = local.config_delivery_channel_name
   s3_bucket_name = module.config_s3_bucket.id
 
-  depends_on     = [
+  depends_on = [
     aws_config_configuration_recorder.this
   ]
 }
