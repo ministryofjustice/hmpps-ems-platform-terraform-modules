@@ -23,6 +23,11 @@ variable "enable_aws_config" {
 }
 
 variable "enable_securityhub_standards" {
-  type = bool
+  type    = bool
+  default = false
+}
+
+variable "enable_ebs_encryption_by_default" {
+  type    = bool
   default = false
 }
