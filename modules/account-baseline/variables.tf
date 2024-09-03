@@ -17,6 +17,11 @@ variable "tags" {
   description = "A list of tags that will be applied to deployed resources."
 }
 
+variable "create_aws_support_role" {
+  type    = bool
+  default = true
+}
+
 variable "enable_aws_config" {
   type    = string
   default = false
