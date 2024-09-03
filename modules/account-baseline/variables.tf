@@ -31,3 +31,8 @@ variable "enable_ebs_encryption_by_default" {
   type    = bool
   default = false
 }
+
+variable "enable_s3_account_public_access_block" {
+  type    = bool
+  default = false
+}
