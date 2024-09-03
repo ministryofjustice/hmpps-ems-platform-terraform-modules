@@ -1,10 +1,10 @@
-data "aws_iam_role" "service_linked_role" {
-  name = "AWSServiceRoleForConfig"
+resource "aws_iam_service_linked_role" "this" {
+  aws_service_name = "config.amazonaws.com"
 }
 
 resource "aws_config_configuration_recorder" "this" {
   name     = local.config_recorder_name
-  role_arn = data.aws_iam_role.service_linked_role.arn
+  role_arn = aws_iam_service_linked_role.this.arn
 
   recording_group {
     all_supported                 = true
