@@ -71,7 +71,7 @@ data "aws_iam_policy_document" "bucket_policy" {
     ]
 
     resources = [
-      "arn:aws:s3:::${local.config_s3_bucket_name}"
+      "arn:aws:s3:::${local.config_s3_bucket_name}/AWSLogs/${data.aws_caller_identity.current.account_id}/Config/*"
     ]
 
     condition {
