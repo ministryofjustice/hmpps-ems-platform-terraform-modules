@@ -2,11 +2,9 @@ module "default_policies" {
   source = "./modules/default-policies"
 }
 
-
 data "aws_iam_policy" "DBAAccess" {
   arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
 }
-
 
 data "aws_iam_policy" "ReadOnlyAccess" {
   arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"

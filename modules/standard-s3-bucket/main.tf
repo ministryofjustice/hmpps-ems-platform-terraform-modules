@@ -1,12 +1,11 @@
-
 data "aws_iam_policy_document" "this" {
-
   source_policy_documents = [
     var.policy,
   ]
 
   statement {
     sid = "DenyInsecureTransport"
+
     actions = [
       "s3:*"
     ]
@@ -15,6 +14,7 @@ data "aws_iam_policy_document" "this" {
 
     principals {
       type = "*"
+
       identifiers = [
         "*"
       ]

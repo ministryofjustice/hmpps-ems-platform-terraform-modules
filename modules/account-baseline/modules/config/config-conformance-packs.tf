@@ -7,7 +7,7 @@ data "http" "ncsc_caf" {
 
 resource "aws_config_conformance_pack" "ncsc_caf" {
   name          = "Operational-Best-Practices-for-NCSC-CAF"
-  template_body = data.http.ncsc_caf.body
+  template_body = data.http.ncsc_caf.response_body
 }
 
 ####################
@@ -19,5 +19,5 @@ data "http" "ncsc_cloudsec" {
 
 resource "aws_config_conformance_pack" "ncsc_cloudsec" {
   name          = "Operational-Best-Practices-for-NCSC-CloudSec-Principles"
-  template_body = data.http.ncsc_cloudsec.body
+  template_body = data.http.ncsc_cloudsec.response_body
 }
