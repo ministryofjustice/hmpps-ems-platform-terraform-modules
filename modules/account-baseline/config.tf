@@ -1,5 +1,5 @@
 resource "aws_iam_service_linked_role" "config_service_role" {
-  count  = var.enable_aws_config ? 1 : 0
+  count = var.enable_aws_config ? 1 : 0
 
   aws_service_name = "config.amazonaws.com"
 }
@@ -17,7 +17,7 @@ module "config_bucket" {
 #   count  = var.enable_aws_config ? 1 : 0
 
 #   source = "./modules/config"
-  
+
 #   providers = {
 #     aws = aws.eu_west_1
 #   }
@@ -29,10 +29,10 @@ module "config_bucket" {
 # }
 
 module "config_eu_west_2" {
-  count  = var.enable_aws_config ? 1 : 0
+  count = var.enable_aws_config ? 1 : 0
 
   source = "./modules/config"
-  
+
   providers = {
     aws = aws.eu_west_2
   }
@@ -47,7 +47,7 @@ module "config_eu_west_2" {
 #   count  = var.enable_aws_config ? 1 : 0
 
 #   source = "./modules/config"
-  
+
 #   providers = {
 #     aws = aws.eu_west_3
 #   }
@@ -62,7 +62,7 @@ module "config_eu_west_2" {
 #   count  = var.enable_aws_config ? 1 : 0
 
 #   source = "./modules/config"
-  
+
 #   providers = {
 #     aws = aws.eu_central_1
 #   }
@@ -77,7 +77,7 @@ module "config_eu_west_2" {
 #   count  = var.enable_aws_config ? 1 : 0
 
 #   source = "./modules/config"
-  
+
 #   providers = {
 #     aws = aws.us_east_1
 #   }
