@@ -24,7 +24,7 @@ resource "aws_securityhub_standards_control" "default_aws_foundational_security_
 
 # Disable IAM.6 - CIS AWS Foundations Benchmark v3.0.0
 resource "aws_securityhub_standards_control" "default_cis_aws_foundations_hardware_mfa" {
-  standards_control_arn = "arn:aws:securityhub:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:control/cis-aws-foundations-benchmark/v/1.2.0/1.14"
+  standards_control_arn = "arn:aws:securityhub:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:control/cis-aws-foundations-benchmark/v/3.0.0/1.6"
   control_status        = "DISABLED"
   disabled_reason       = "Root user access is controlled by the hosting team."
 
