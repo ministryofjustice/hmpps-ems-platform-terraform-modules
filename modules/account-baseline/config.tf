@@ -25,7 +25,6 @@ module "config_bucket" {
 #   config_bucket_name   = module.config_bucket[0].bucket_id
 #   config_service_role  = aws_iam_service_linked_role.config_service_role[0].arn
 #   resource_name_prefix = var.resource_name_prefix
-#   tags                 = var.tags
 # }
 
 module "config_eu_west_2" {
@@ -40,7 +39,6 @@ module "config_eu_west_2" {
   config_bucket_name   = module.config_bucket[0].bucket_id
   config_service_role  = aws_iam_service_linked_role.config_service_role[0].arn
   resource_name_prefix = var.resource_name_prefix
-  tags                 = var.tags
 }
 
 # module "config_eu_west_3" {
@@ -55,7 +53,6 @@ module "config_eu_west_2" {
 #   config_bucket_name   = module.config_bucket[0].bucket_id
 #   config_service_role  = aws_iam_service_linked_role.config_service_role[0].arn
 #   resource_name_prefix = var.resource_name_prefix
-#   tags                 = var.tags
 # }
 
 # module "config_eu_central_1" {
@@ -70,7 +67,6 @@ module "config_eu_west_2" {
 #   config_bucket_name   = module.config_bucket[0].bucket_id
 #   config_service_role  = aws_iam_service_linked_role.config_service_role[0].arn
 #   resource_name_prefix = var.resource_name_prefix
-#   tags                 = var.tags
 # }
 
 # module "config_us_east_1" {
@@ -85,5 +81,4 @@ module "config_eu_west_2" {
 #   config_bucket_name   = module.config_bucket[0].bucket_id
 #   config_service_role  = aws_iam_service_linked_role.config_service_role[0].arn
 #   resource_name_prefix = var.resource_name_prefix
-#   tags                 = var.tags
 # }

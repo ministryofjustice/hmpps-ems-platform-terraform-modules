@@ -8,7 +8,6 @@ data "template_file" "cloudwatch_event_rule" {
 TEMPLATE
 }
 
-
 data "aws_iam_policy_document" "cloudwatch_log_resource_policy" {
   statement {
     sid    = "TrustEventsToStoreLogEvents"
@@ -28,12 +27,10 @@ data "aws_iam_policy_document" "cloudwatch_log_resource_policy" {
   }
 }
 
-
 resource "aws_cloudwatch_log_group" "this" {
   name = local.cloudwatch_log_group_name
   tags = var.tags
 }
-
 
 resource "aws_cloudwatch_event_rule" "this" {
   name          = local.cloudwatch_event_rule_name
@@ -41,13 +38,11 @@ resource "aws_cloudwatch_event_rule" "this" {
   tags          = var.tags
 }
 
-
 resource "aws_cloudwatch_event_target" "this" {
   target_id = local.cloudwatch_event_target_id
   rule      = aws_cloudwatch_event_rule.this.name
   arn       = aws_cloudwatch_log_group.this.arn
 }
-
 
 resource "aws_cloudwatch_log_subscription_filter" "this" {
   name            = local.cloudwatch_log_group_name
@@ -55,7 +50,6 @@ resource "aws_cloudwatch_log_subscription_filter" "this" {
   filter_pattern  = ""
   destination_arn = var.sl_firehose_destination_guardduty
 }
-
 
 resource "aws_cloudwatch_log_resource_policy" "this" {
   policy_document = data.aws_iam_policy_document.cloudwatch_log_resource_policy.json

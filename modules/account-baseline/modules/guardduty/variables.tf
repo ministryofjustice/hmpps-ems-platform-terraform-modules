@@ -1,20 +1,3 @@
-variable "resource_name_prefix" {
-  type        = string
-  description = "This is the prefix that will be applied to all resources deployed by this module."
-}
-
-
-variable "tags" {
-  type        = map(string)
-  description = "A list of tags that will be applied to deployed resources."
-}
-
-
-variable "sl_firehose_destination_guardduty" {
-  type = string
-}
-
-
 variable "enable_collector" {
   type        = string
   description = "Enable monitoring and feedback reporting"
@@ -32,10 +15,16 @@ variable "publishing_frequency" {
   default     = "FIFTEEN_MINUTES"
 }
 
+variable "resource_name_prefix" {
+  type        = string
+  description = "This is the prefix that will be applied to all resources deployed by this module."
+}
 
-locals {
-  cloudwatch_log_group_name                 = "/aws/events/${var.resource_name_prefix}-guardduty-log-group"
-  cloudwatch_log_group_resource_policy_name = "${var.resource_name_prefix}-guardduty-log-group-resource-policy"
-  cloudwatch_event_rule_name                = "${var.resource_name_prefix}-guardduty-event-rule"
-  cloudwatch_event_target_id                = "${var.resource_name_prefix}-guardduty-event-target"
+variable "sl_firehose_destination_guardduty" {
+  type = string
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "A list of tags that will be applied to deployed resources."
 }
