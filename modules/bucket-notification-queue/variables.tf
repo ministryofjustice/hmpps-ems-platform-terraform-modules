@@ -23,6 +23,10 @@ variable "publishing_bucket_arn" {
   }
 }
 
+variable "publishing_topic_arn" {
+  type        = string
+  description = "The arn of the SNS topic that will publish events."
+}
 
 variable "tags" {
   type        = map(string)

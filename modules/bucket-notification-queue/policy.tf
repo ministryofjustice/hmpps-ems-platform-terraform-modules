@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "this" {
   statement {
-    sid = "AllowBucketToPubishEvents"
+    sid = "AllowBucketToPublishEvents"
 
     actions = [
       "sqs:SendMessage"
@@ -33,6 +33,31 @@ data "aws_iam_policy_document" "this" {
     resources = [
       aws_sqs_queue.this.arn
     ]
+  }
+
+  statement {
+    sid = "AllowTopicToPublishEvents"
+
+    principals {
+      type        = "Service"
+      identifiers = ["sns.amazonaws.com"]
+    }
+
+    actions = [
+      "sqs:SendMessage"
+    ]
+
+    resources = [
+      aws_sqs_queue.this.arn
+    ]
+
+    condition {
+      test     = "ArnEquals"
+      variable = "aws:SourceArn"
+      values   = [
+        var.publishing_topic_arn
+      ]
+    }
   }
 
   statement {
