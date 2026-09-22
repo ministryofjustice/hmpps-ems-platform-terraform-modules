@@ -41,8 +41,11 @@ variable "security_operations_centre_aws_principal" {
   default     = "arn:aws:iam::812422902288:user/cumulo-aws-api-user" # E2E-Assure service user
 
   validation {
-    error_message = "The value must be the arn of an AWS user."
-    condition     = can(regex("^arn:aws:iam::\\d{12}?:user/[\\w+=,.@-]{1,64}$", var.security_operations_centre_aws_principal))
+    error_message = "The value must be an AWS IAM ARN."
+    condition = can(regex(
+      "^arn:aws:iam::\\d{12}:.*$",
+      var.security_operations_centre_aws_principal
+    ))
   }
 }
 
