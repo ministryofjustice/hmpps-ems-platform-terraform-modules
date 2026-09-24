@@ -80,7 +80,10 @@ data "aws_iam_policy_document" "kms" {
     actions = ["kms:Encrypt*", "kms:Decrypt*", "kms:ReEncrypt*", "kms:GenerateDataKey*", "kms:Describe*"]
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::898412348835:role/hmpps-sl-security-operations-centre-role"]
+      identifiers = [
+        "arn:aws:iam::898412348835:role/hmpps-sl-security-operations-centre-role",
+        "arn:aws:iam::898412348835:role/hmpps-sl-xsiam-security-operations-centre-role",
+      ]
     }
     resources = ["*"]
   }
